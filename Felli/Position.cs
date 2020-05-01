@@ -6,10 +6,9 @@ namespace Felli
 {
     public struct Position
     {
-        private byte X { get; }
-        private byte Y { get; }
-
-        public Position(byte x = 0, byte y = 0)
+        public int X { get; }
+        public int Y { get; }
+        public Position(int x, int y)
         {
             X = x;
             Y = y;
