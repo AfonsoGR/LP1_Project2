@@ -22,8 +22,8 @@ namespace Felli
         public void PieceMovement(Board board)
         {
             Console.WriteLine("Which way do you wish to move the piece?\n"
-            + "\t1 -> Top Left\t\t2 -> Top\t3 -> TopRight\n"
-            + "\t4 -> Bottom Left\t5 -> Bottom\t6 -> Bottom Right");
+            + "\t1 -> Left\t3 -> Top Left\t\t5 -> Top\t7 -> TopRight\n"
+            + "\t2 -> Right\t4 -> Bottom Left\t6 -> Bottom\t8 -> Bottom Right");
 
             int moveChoice;
 
@@ -32,31 +32,121 @@ namespace Felli
 
             if (moveChoice == 1)
             {
+                if(piecePos.X > 0 && 
+                    board[piecePos.X - 1, piecePos.Y] != 'B' && 
+                    board[piecePos.X - 1, piecePos.Y] != 'W')
+                {
+                    piecePos = new Position(piecePos.X - 1, piecePos.Y);
+                }
+                else
+                {
+                    Console.WriteLine("Your piece can't move that way.\n");
 
+                    PieceMovement(board);
+                }
             }
             else if (moveChoice == 2)
             {
-                
+                if(piecePos.X < 5 && 
+                    board[piecePos.X + 1, piecePos.Y] != 'B' && 
+                    board[piecePos.X + 1, piecePos.Y] != 'W')
+                {
+                    piecePos = new Position(piecePos.X + 1, piecePos.Y);
+                }
+                else
+                {
+                    Console.WriteLine("Your piece can't move that way.\n");
+
+                    PieceMovement(board);
+                }
             }
             else if (moveChoice == 3)
             {
-                
+                if(piecePos.X > 0 && piecePos.Y > 0 && 
+                    board[piecePos.X - 1, piecePos.Y - 1] != 'B' && 
+                    board[piecePos.X - 1, piecePos.Y - 1] != 'W')
+                {
+                    piecePos = new Position(piecePos.X - 1, piecePos.Y - 1);
+                }
+                else
+                {
+                    Console.WriteLine("Your piece can't move that way.\n");
+
+                    PieceMovement(board);
+                }
             }
             else if (moveChoice == 4)
             {
-                
+                if(piecePos.X > 0 && piecePos.Y < 5 && 
+                    board[piecePos.X - 1, piecePos.Y + 1] != 'B' && 
+                    board[piecePos.X - 1, piecePos.Y + 1] != 'W')
+                {
+                    piecePos = new Position(piecePos.X - 1, piecePos.Y + 1);
+                }
+                else
+                {
+                    Console.WriteLine("Your piece can't move that way.\n");
+
+                    PieceMovement(board);
+                }                
             }
             else if (moveChoice == 5)
             {
-                
+                if(piecePos.X > 0 && 
+                    board[piecePos.X, piecePos.Y - 1] != 'B' && 
+                    board[piecePos.X, piecePos.Y - 1] != 'W')
+                {
+                    piecePos = new Position(piecePos.X, piecePos.Y - 1);
+                }
+                else
+                {
+                    Console.WriteLine("Your piece can't move that way.\n");
+
+                    PieceMovement(board);
+                }                
             }
             else if (moveChoice == 6)
             {
+                if(piecePos.X < 5 && 
+                    board[piecePos.X, piecePos.Y + 1] != 'B' && 
+                    board[piecePos.X, piecePos.Y + 1] != 'W')
+                {
+                    piecePos = new Position(piecePos.X, piecePos.Y + 1);
+                }
+                else
+                {
+                    Console.WriteLine("Your piece can't move that way.\n");
 
+                    PieceMovement(board);
+                }
+            }
+            else if (moveChoice == 7)
+            {
+                if(piecePos.X < 5 && piecePos.Y > 0 && 
+                    board[piecePos.X + 1, piecePos.Y - 1] != 'B' && 
+                    board[piecePos.X + 1, piecePos.Y - 1] != 'W')
+                {
+                    piecePos = new Position(piecePos.X + 1, piecePos.Y - 1);
+                }
+                else
+                {
+                    Console.WriteLine("Your piece can't move that way.\n");
+
+                    PieceMovement(board);
+                }
+            }
+            else if (moveChoice == 8)
+            {
+                if(piecePos.X < 5 && piecePos.Y < 5 && 
+                    board[piecePos.X + 1, piecePos.Y + 1] != 'B' && 
+                    board[piecePos.X + 1, piecePos.Y + 1] != 'W')
+                {
+                    piecePos = new Position(piecePos.X + 1, piecePos.Y + 1);
+                }
             }
             else
             {
-                Console.WriteLine("Your piece can't move that way.\n");
+                Console.WriteLine("That choice isn't valid.\n");
 
                 PieceMovement(board);
             }

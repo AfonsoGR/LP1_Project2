@@ -31,14 +31,14 @@ namespace Felli
                 + "piece, and landing afterwards on an adjacent open space. "
                 + "\n\tIf there is no adjacent open space next to the consumed"
                 + "piece then it can not be eliminated (like in checkers)."
-                + "\n\t Each player can only move 1 (one) piece per turn.\n"
+                + "\n\tEach player can only move 1 (one) piece per turn.\n"
                 + "\nThe game ends when one of the player is either out of "
                 + "pieces or can not move any of his pieces, therefore "
-                + "granting victory to his opponent.\n"
+                + "granting victory to his opponent.\n\n"
                 + ">>>>>> Press any key when you are ready to start <<<<<<");
             
             // Waits for the user's input before proceeding 
-            Console.Read();
+            Console.ReadKey();
         }
     }
 }
