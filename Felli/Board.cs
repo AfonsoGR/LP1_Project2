@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Felli
 {
-    class Board
+    public class Board
     {
         private readonly char[,] boardPieces;
 
