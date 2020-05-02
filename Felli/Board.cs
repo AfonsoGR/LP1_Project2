@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Felli
+﻿namespace Felli
 {
     public class Board
     {
@@ -38,7 +34,6 @@ namespace Felli
                 boardPieces[x, (ySize / 2)] = 'o';
                 y++;
             }
-
         }
     }
 }
