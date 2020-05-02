@@ -17,6 +17,5 @@ namespace Felli
             Renderer r = new Renderer(board);
             r.Render();
         }
-
     }
 }
