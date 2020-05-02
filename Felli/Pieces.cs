@@ -2,6 +2,9 @@ using System;
 
 namespace Felli
 {
+    /// <summary>
+    /// Sets up the game pieces to be placed on the board and their movement
+    /// </summary>
     public class Pieces
     {
         public Position piecePos;
@@ -19,11 +22,14 @@ namespace Felli
             board[piecePos.X, piecePos.Y] = visuals;
         }
 
-        public void PieceMovement(Board board)
+        public void PieceMovement(Board board, ColorChoice color)
         {
+            //ColorChoice colorChoice = color;
+
             Console.WriteLine("Which way do you wish to move the piece?\n"
             + "\t1 -> Left\t3 -> Top Left\t\t5 -> Top\t7 -> TopRight\n"
-            + "\t2 -> Right\t4 -> Bottom Left\t6 -> Bottom\t8 -> Bottom Right");
+            + "\t2 -> Right\t4 -> Bottom Left\t6 -> Bottom\t8 -> "
+            + "Bottom Right");
 
             int moveChoice;
 
@@ -32,24 +38,27 @@ namespace Felli
 
             if (moveChoice == 1)
             {
-                if(piecePos.X > 0 && 
-                    board[piecePos.X - 1, piecePos.Y] != 'B' && 
-                    board[piecePos.X - 1, piecePos.Y] != 'W')
+                if (piecePos.X > 0 && 
+                    //board[piecePos.X - 1, piecePos.Y] != null &&
+                    board[piecePos.X - 1, piecePos.Y] == 'o')
                 {
                     piecePos = new Position(piecePos.X - 1, piecePos.Y);
                 }
+                // else if (para verificar se pode comer a peça)
+                // {
+                //     ;
+                // }
                 else
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement(board, color);
                 }
             }
             else if (moveChoice == 2)
             {
-                if(piecePos.X < 5 && 
-                    board[piecePos.X + 1, piecePos.Y] != 'B' && 
-                    board[piecePos.X + 1, piecePos.Y] != 'W')
+                if (piecePos.X < 5 && 
+                    board[piecePos.X + 1, piecePos.Y] == 'o')
                 {
                     piecePos = new Position(piecePos.X + 1, piecePos.Y);
                 }
@@ -57,14 +66,13 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement(board, color);
                 }
             }
             else if (moveChoice == 3)
             {
-                if(piecePos.X > 0 && piecePos.Y > 0 && 
-                    board[piecePos.X - 1, piecePos.Y - 1] != 'B' && 
-                    board[piecePos.X - 1, piecePos.Y - 1] != 'W')
+                if (piecePos.X > 0 && piecePos.Y > 0 && 
+                    board[piecePos.X - 1, piecePos.Y - 1] == 'o')
                 {
                     piecePos = new Position(piecePos.X - 1, piecePos.Y - 1);
                 }
@@ -72,14 +80,13 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement(board, color);
                 }
             }
             else if (moveChoice == 4)
             {
-                if(piecePos.X > 0 && piecePos.Y < 5 && 
-                    board[piecePos.X - 1, piecePos.Y + 1] != 'B' && 
-                    board[piecePos.X - 1, piecePos.Y + 1] != 'W')
+                if (piecePos.X > 0 && piecePos.Y < 5 && 
+                    board[piecePos.X - 1, piecePos.Y + 1] == 'o')
                 {
                     piecePos = new Position(piecePos.X - 1, piecePos.Y + 1);
                 }
@@ -87,14 +94,13 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement(board, color);
                 }                
             }
             else if (moveChoice == 5)
             {
-                if(piecePos.X > 0 && 
-                    board[piecePos.X, piecePos.Y - 1] != 'B' && 
-                    board[piecePos.X, piecePos.Y - 1] != 'W')
+                if (piecePos.X > 0 && 
+                    board[piecePos.X, piecePos.Y - 1] == 'o')
                 {
                     piecePos = new Position(piecePos.X, piecePos.Y - 1);
                 }
@@ -102,14 +108,13 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement(board, color);
                 }                
             }
             else if (moveChoice == 6)
             {
-                if(piecePos.X < 5 && 
-                    board[piecePos.X, piecePos.Y + 1] != 'B' && 
-                    board[piecePos.X, piecePos.Y + 1] != 'W')
+                if (piecePos.X < 5 && 
+                    board[piecePos.X, piecePos.Y + 1] == 'o')
                 {
                     piecePos = new Position(piecePos.X, piecePos.Y + 1);
                 }
@@ -117,14 +122,13 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement(board, color);
                 }
             }
             else if (moveChoice == 7)
             {
-                if(piecePos.X < 5 && piecePos.Y > 0 && 
-                    board[piecePos.X + 1, piecePos.Y - 1] != 'B' && 
-                    board[piecePos.X + 1, piecePos.Y - 1] != 'W')
+                if (piecePos.X < 5 && piecePos.Y > 0 && 
+                    board[piecePos.X + 1, piecePos.Y - 1] == 'o')
                 {
                     piecePos = new Position(piecePos.X + 1, piecePos.Y - 1);
                 }
@@ -132,14 +136,13 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement(board, color);
                 }
             }
             else if (moveChoice == 8)
             {
-                if(piecePos.X < 5 && piecePos.Y < 5 && 
-                    board[piecePos.X + 1, piecePos.Y + 1] != 'B' && 
-                    board[piecePos.X + 1, piecePos.Y + 1] != 'W')
+                if (piecePos.X < 5 && piecePos.Y < 5 && 
+                    board[piecePos.X + 1, piecePos.Y + 1] == 'o')
                 {
                     piecePos = new Position(piecePos.X + 1, piecePos.Y + 1);
                 }
@@ -148,7 +151,7 @@ namespace Felli
             {
                 Console.WriteLine("That choice isn't valid.\n");
 
-                PieceMovement(board);
+                PieceMovement(board, color);
             }
         }
     }

@@ -2,6 +2,9 @@ using System;
 
 namespace Felli
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Player
     {
         public Player(ColorChoice color)
