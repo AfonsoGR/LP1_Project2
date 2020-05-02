@@ -22,10 +22,8 @@ namespace Felli
             board[piecePos.X, piecePos.Y] = visuals;
         }
 
-        public void PieceMovement(Board board, ColorChoice color)
+        public void PieceMovement(Board board)
         {
-            //ColorChoice colorChoice = color;
-
             Console.WriteLine("Which way do you wish to move the piece?\n"
             + "\t1 -> Left\t3 -> Top Left\t\t5 -> Top\t7 -> TopRight\n"
             + "\t2 -> Right\t4 -> Bottom Left\t6 -> Bottom\t8 -> "
@@ -38,21 +36,21 @@ namespace Felli
 
             if (moveChoice == 1)
             {
-                if (piecePos.X > 0 && 
-                    //board[piecePos.X - 1, piecePos.Y] != null &&
+                if (piecePos.X > 0 &&
                     board[piecePos.X - 1, piecePos.Y] == 'o')
                 {
                     piecePos = new Position(piecePos.X - 1, piecePos.Y);
                 }
-                // else if (para verificar se pode comer a peça)
-                // {
-                //     ;
-                // }
+                // ver se dá para comer a peça
+                else if (piecePos.X > 0)
+                {
+                    ;
+                }
                 else
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board, color);
+                    PieceMovement(board);
                 }
             }
             else if (moveChoice == 2)
@@ -66,7 +64,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board, color);
+                    PieceMovement(board);
                 }
             }
             else if (moveChoice == 3)
@@ -80,7 +78,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board, color);
+                    PieceMovement(board);
                 }
             }
             else if (moveChoice == 4)
@@ -94,7 +92,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board, color);
+                    PieceMovement(board);
                 }                
             }
             else if (moveChoice == 5)
@@ -108,7 +106,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board, color);
+                    PieceMovement(board);
                 }                
             }
             else if (moveChoice == 6)
@@ -122,7 +120,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board, color);
+                    PieceMovement(board);
                 }
             }
             else if (moveChoice == 7)
@@ -136,7 +134,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board, color);
+                    PieceMovement(board);
                 }
             }
             else if (moveChoice == 8)
@@ -151,7 +149,7 @@ namespace Felli
             {
                 Console.WriteLine("That choice isn't valid.\n");
 
-                PieceMovement(board, color);
+                PieceMovement(board);
             }
         }
     }
