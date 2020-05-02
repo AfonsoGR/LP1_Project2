@@ -39,7 +39,7 @@ namespace Felli
                 if (piecePos.X > 0 &&
                     board[piecePos.X - 1, piecePos.Y] == 'o')
                 {
-                    piecePos = new Position(piecePos.X - 1, piecePos.Y);
+                    piecePos += (-1, 0);
                 }
                 // ver se dá para comer a peça
                 else if (piecePos.X > 0)
@@ -58,7 +58,7 @@ namespace Felli
                 if (piecePos.X < 5 && 
                     board[piecePos.X + 1, piecePos.Y] == 'o')
                 {
-                    piecePos = new Position(piecePos.X + 1, piecePos.Y);
+                    piecePos += (1, 0);;
                 }
                 else
                 {
@@ -72,7 +72,7 @@ namespace Felli
                 if (piecePos.X > 0 && piecePos.Y > 0 && 
                     board[piecePos.X - 1, piecePos.Y - 1] == 'o')
                 {
-                    piecePos = new Position(piecePos.X - 1, piecePos.Y - 1);
+                    piecePos += (-1, -1);;
                 }
                 else
                 {
@@ -86,7 +86,7 @@ namespace Felli
                 if (piecePos.X > 0 && piecePos.Y < 5 && 
                     board[piecePos.X - 1, piecePos.Y + 1] == 'o')
                 {
-                    piecePos = new Position(piecePos.X - 1, piecePos.Y + 1);
+                    piecePos += (-1, 1);
                 }
                 else
                 {
@@ -100,7 +100,7 @@ namespace Felli
                 if (piecePos.X > 0 && 
                     board[piecePos.X, piecePos.Y - 1] == 'o')
                 {
-                    piecePos = new Position(piecePos.X, piecePos.Y - 1);
+                    piecePos += (0, -1);
                 }
                 else
                 {
@@ -114,7 +114,7 @@ namespace Felli
                 if (piecePos.X < 5 && 
                     board[piecePos.X, piecePos.Y + 1] == 'o')
                 {
-                    piecePos = new Position(piecePos.X, piecePos.Y + 1);
+                    piecePos += (0, 1);
                 }
                 else
                 {
@@ -128,7 +128,7 @@ namespace Felli
                 if (piecePos.X < 5 && piecePos.Y > 0 && 
                     board[piecePos.X + 1, piecePos.Y - 1] == 'o')
                 {
-                    piecePos = new Position(piecePos.X + 1, piecePos.Y - 1);
+                    piecePos += (1, -1);
                 }
                 else
                 {
@@ -142,7 +142,7 @@ namespace Felli
                 if (piecePos.X < 5 && piecePos.Y < 5 && 
                     board[piecePos.X + 1, piecePos.Y + 1] == 'o')
                 {
-                    piecePos = new Position(piecePos.X + 1, piecePos.Y + 1);
+                    piecePos += (1, 1);
                 }
             }
             else
