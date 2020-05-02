@@ -13,5 +13,18 @@ namespace Felli
             X = x;
             Y = y;
         }
+
+        public override bool Equals(object obj) => base.Equals(obj);
+
+        public override int GetHashCode() => base.GetHashCode();
+
+        public static bool operator ==(Position left, Position right) =>
+            left.X == right.X && left.Y == right.Y;
+
+        public static bool operator !=(Position left, Position right) => 
+            !(left == right);
+
+        public static Position operator +(Position pos, (int,int) add) =>
+            new Position(pos.X + add.Item1, pos.Y + add.Item2);
     }
 }
