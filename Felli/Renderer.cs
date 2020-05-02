@@ -1,24 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Felli
 {
     class Renderer
     {
         private readonly Board board;
-        private string[,] boardPieces;
+        private readonly string[] connectors;
+
         public Renderer(Board board)
         {
-            boardPieces = new string[5, 5];
+            connectors = new string[6] { @"\", "|", "/", "/", "|", @"\" };
             this.board = board;
         }
+
         public void Render()
         {
             // Clears the console
             Console.Clear();
 
             int l = board.SizeX - board.SizeX / 2;
+
             int z = -1;
 
             // A loop for the width of the board
@@ -28,21 +29,18 @@ namespace Felli
 
                 int nLines = 0;
 
-                if (x <= board.SizeX / 2) l--;
-                else l++;
-
-                if (x <= board.SizeX / 2) z++;
-                else z--;
-
-                if (x == board.SizeX / 2)
+                if (x <= board.SizeX / 2)
                 {
-                    Console.Write(" ");
+                    l--;
+                    z++;
+                }
+                else
+                {
+                    l++;
+                    z--;
                 }
 
-                for (int p = 0; p < z; p++)
-                {
-                    Console.Write(" ");
-                }
+                DrawSpaces(l, x, z);
 
                 // A loop for the height of the board
                 for (int y = 0; y < board.SizeY; y++)
@@ -61,41 +59,49 @@ namespace Felli
                         }
                     }
                 }
+                DrawConnectors(x);
+            }
+        }
 
-                //if (x < board.SizeX / 2)
-                //{
-                //    Console.Write("\n");
-                //    Console.Write(@"\");
-                //    for (int o = 0; o < l; o++)
-                //    {
-                //        Console.Write(" ");
-                //    }
+        private void DrawSpaces(int l, int x, int z)
+        {
+            if (x == board.SizeX / 2)
+            {
+                Console.Write(" ");
+            }
 
-                //    Console.Write("|");
-                //    for (int o = 0; o < l; o++)
-                //    {
-                //        Console.Write(" ");
-                //    }
+            for (int p = 0; p < z; p++)
+            {
+                Console.Write(" ");
+            }
+        }
 
-                //    Console.Write("/");
-                //}
-                //else
-                //{
-                //    Console.Write("\n");
-                //    Console.Write(@"/");
-                //    for (int o = 0; o < l; o++)
-                //    {
-                //        Console.Write(" ");
-                //    }
+        private void DrawConnectors(int x)
+        {
+            Console.Write("\n");
 
-                //    Console.Write("|");
-                //    for (int o = 0; o < l; o++)
-                //    {
-                //        Console.Write(" ");
-                //    }
+            int ç = x < board.SizeX / 2 ? 0 : 3;
 
-                //    Console.Write(@"\");
-                //}
+            for (int y = 0; y < board.SizeY; y++)
+            {
+                if (x < board.SizeX / 2)
+                {
+                    if (board[x, y] != default)
+                    {
+                        Console.Write(connectors[ç]); ç++;
+                    }
+                    else
+                        Console.Write("  ");
+                }
+                else if (x + 1 < board.SizeX && x >= board.SizeX / 2)
+                {
+                    if (board[x + 1, y] != default)
+                    {
+                        Console.Write(connectors[ç]); ç++;
+                    }
+                    else
+                        Console.Write("  ");
+                }
             }
         }
     }
