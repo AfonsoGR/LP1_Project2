@@ -41,11 +41,13 @@ namespace Felli
                 {
                     piecePos += (-1, 0);
                 }
-                // ver se dá para comer a peça
-                else if (piecePos.X > 0)
-                {
-                    ;
-                }
+                // ver se dá para comer a peça, falta verificar a cor
+                // else if (piecePos.X > 0 && 
+                //     board[piecePos.X - 2, piecePos.Y] == 'o')
+                // {
+                //     board[piecePos.X - 1, piecePos.Y] = 'o';
+                //     piecePos += (-2, 0);
+                // }
                 else
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
@@ -60,6 +62,13 @@ namespace Felli
                 {
                     piecePos += (1, 0);;
                 }
+                // ver se dá para comer a peça, falta verificar a cor
+                // else if (piecePos.X < 5 && 
+                //     board[piecePos.X + 2, piecePos.Y] == 'o')
+                // {
+                //     board[piecePos.X + 1, piecePos.Y] = 'o';
+                //     piecePos += (2, 0);
+                // }
                 else
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
@@ -74,6 +83,13 @@ namespace Felli
                 {
                     piecePos += (-1, -1);;
                 }
+                // ver se dá para comer a peça, falta verificar a cor
+                // else if ((piecePos.X > 0 && piecePos.Y > 0 && 
+                //     board[piecePos.X - 2, piecePos.Y - 2] == 'o')
+                // {
+                //     board[piecePos.X - 1, piecePos.Y] = 'o';
+                //     piecePos += (-2, -2);
+                // }
                 else
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
@@ -88,6 +104,13 @@ namespace Felli
                 {
                     piecePos += (-1, 1);
                 }
+                // ver se dá para comer a peça, falta verificar a cor
+                // else if (piecePos.X > 0 && piecePos.Y < 5 && 
+                //     board[piecePos.X - 2, piecePos.Y + 2] == 'o')
+                // {
+                //     board[piecePos.X - 1, piecePos.Y + 1] = 'o';
+                //     piecePos += (-2, 2);
+                // }
                 else
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
@@ -102,6 +125,13 @@ namespace Felli
                 {
                     piecePos += (0, -1);
                 }
+                // ver se dá para comer a peça, falta verificar a cor
+                // else if (piecePos.X > 0 && 
+                //     board[piecePos.X, piecePos.Y - 2] == 'o')
+                // {
+                //     board[piecePos.X, piecePos.Y - 1] = 'o';
+                //     piecePos += (0, -2);
+                // }
                 else
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
@@ -116,6 +146,13 @@ namespace Felli
                 {
                     piecePos += (0, 1);
                 }
+                // ver se dá para comer a peça, falta verificar a cor
+                // else if (piecePos.X < 5 && 
+                //     board[piecePos.X, piecePos.Y + 2] == 'o')
+                // {
+                //     board[piecePos.X, piecePos.Y + 1] = 'o';
+                //     piecePos += (0, 2);
+                // }
                 else
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
@@ -130,6 +167,13 @@ namespace Felli
                 {
                     piecePos += (1, -1);
                 }
+                // ver se dá para comer a peça, falta verificar a cor
+                // else if (piecePos.X < 5 && piecePos.Y > 0 && 
+                //     board[piecePos.X + 2, piecePos.Y - 2] == 'o')
+                // {
+                //     board[piecePos.X + 1, piecePos.Y - 1] = 'o';
+                //     piecePos += (2, -2);
+                // }
                 else
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
@@ -143,6 +187,19 @@ namespace Felli
                     board[piecePos.X + 1, piecePos.Y + 1] == 'o')
                 {
                     piecePos += (1, 1);
+                }
+                // ver se dá para comer a peça, falta verificar a cor
+                // else if (piecePos.X < 5 && piecePos.Y < 5 && 
+                //     board[piecePos.X + 2, piecePos.Y + 2] == 'o')
+                // {
+                //     board[piecePos.X + 1, piecePos.Y + 1] = 'o';
+                //     piecePos += (2, 2);
+                // }
+                else
+                {
+                    Console.WriteLine("Your piece can't move that way.\n");
+
+                    PieceMovement(board);
                 }
             }
             else
