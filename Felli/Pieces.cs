@@ -12,7 +12,7 @@ namespace Felli
 
         public Pieces(char visuals, int row = 0, int column = 0)
         {
-            Position position = new Position(row, column);
+            piecePos = new Position(row, column);
 
             this.visuals = visuals;
         }
