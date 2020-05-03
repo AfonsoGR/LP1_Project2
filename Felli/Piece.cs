@@ -35,7 +35,6 @@ namespace Felli
                 if (piecePos.Y > 0
                     && board[piecePos.X, piecePos.Y - 1] == 'o')
                 {
-                    board[piecePos.X, piecePos.Y] = 'o';
                     piecePos += (0, -1);
 
                     return null;
@@ -50,7 +49,6 @@ namespace Felli
                 if (piecePos.Y < 5
                     && board[piecePos.X, piecePos.Y + 1] == 'o')
                 {
-                    board[piecePos.X, piecePos.Y] = 'o';
                     piecePos += (0, 1); 
                     return null;
                 }
@@ -64,7 +62,6 @@ namespace Felli
                 if (piecePos.X > 0 && piecePos.Y < 5
                     && board[piecePos.X - 1, piecePos.Y + 1] == 'o')
                 {
-                    board[piecePos.X, piecePos.Y] = 'o';
                     piecePos += (-1, 1);
                     return null;
                 }
@@ -78,7 +75,6 @@ namespace Felli
                 if (piecePos.X < 5 && piecePos.Y > 0
                     && board[piecePos.X + 1, piecePos.Y - 1] == 'o')
                 {
-                    board[piecePos.X, piecePos.Y] = 'o';
                     piecePos += (1, -1); 
                     
                     return null;
@@ -93,7 +89,6 @@ namespace Felli
                 if (piecePos.X > 0
                     && board[piecePos.X - 1, piecePos.Y] == 'o')
                 {
-                    board[piecePos.X, piecePos.Y] = 'o';
                     piecePos += (-1, 0);
 
                     return null;
@@ -108,7 +103,6 @@ namespace Felli
                 if (piecePos.X < 5
                     && board[piecePos.X + 1, piecePos.Y] == 'o')
                 {
-                    board[piecePos.X, piecePos.Y] = 'o';
                     piecePos += (1, 0);
 
                     return null;
@@ -123,7 +117,6 @@ namespace Felli
                 if (piecePos.X > 0 && piecePos.Y < 5
                     && board[piecePos.X - 1, piecePos.Y + 1] == 'o')
                 {
-                    board[piecePos.X, piecePos.Y] = 'o';
                     piecePos += (-1, 1);
 
                     return null;
@@ -138,7 +131,6 @@ namespace Felli
                 if (piecePos.X < 5 && piecePos.Y < 5
                     && board[piecePos.X + 1, piecePos.Y + 1] == 'o')
                 {
-                    board[piecePos.X, piecePos.Y] = 'o';
                     piecePos += (1, 1);
 
                     return null;
