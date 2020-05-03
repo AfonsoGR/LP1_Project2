@@ -39,9 +39,7 @@ namespace Felli
                     return null;
                 }
                 else
-                {
                     return "Your piece can't move that way.";
-                }
             }
             else if (moveChoice == 6)
             {
@@ -52,9 +50,7 @@ namespace Felli
                     return null;
                 }
                 else
-                {
                     return "Your piece can't move that way.";
-                }
             }
             else if (moveChoice == 7)
             {
@@ -65,9 +61,7 @@ namespace Felli
                     return null;
                 }
                 else
-                {
                     return "Your piece can't move that way.";
-                }
             }
             else if (moveChoice == 1)
             {
@@ -78,9 +72,7 @@ namespace Felli
                     return null;
                 }
                 else
-                {
                     return "Your piece can't move that way.";
-                }
             }
             else if (moveChoice == 8)
             {
@@ -91,9 +83,7 @@ namespace Felli
                     return null;
                 }
                 else
-                {
                     return "Your piece can't move that way.";
-                }
             }
             else if (moveChoice == 2)
             {
@@ -104,9 +94,7 @@ namespace Felli
                     return null;
                 }
                 else
-                {
                     return "Your piece can't move that way.";
-                }
             }
             else if (moveChoice == 9)
             {
@@ -117,9 +105,7 @@ namespace Felli
                     return null;
                 }
                 else
-                {
                     return "Your piece can't move that way.";
-                }
             }
             else if (moveChoice == 3)
             {
@@ -130,14 +116,10 @@ namespace Felli
                     return null;
                 }
                 else
-                {
                     return "Your piece can't move that way.";
-                }
             }
             else
-            {
-                return "Your piece can't move that way.";
-            }
+                return "Please select valid option.";
         }
     }
 }

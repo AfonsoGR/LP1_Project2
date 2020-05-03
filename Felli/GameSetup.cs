@@ -36,61 +36,50 @@ namespace Felli
             return board;
         }
 
-        public void PieceSelection((Piece[] white, Piece[] black) pieces)
+        public ColorChoice OrderSelection()
         {
-            Console.WriteLine("There will be 2 players, choose amongst "
-                + "you who will be Player 1 and Player 2. "
-                + "Player 1 will choose his pieces first.\n"
-                + "Player 1 choose which pieces you want to use:"
-                + "\n\t>> Press B for the Black pieces <<"
-                + "\n\t>> Press W for the White pieces <<");
+            char orderChoice = ' ';
 
-            string pieceChoice = null;
-
-            while (pieceChoice != "w" || pieceChoice != "b") 
+            while (orderChoice != 'W' || orderChoice != 'B')
             {
-                pieceChoice = Console.ReadLine();
+                orderChoice = Console.ReadLine().ToUpper()[0];
             }
 
-            pieceChoice.ToLower();
-
-            if (pieceChoice == "b")
-            {
-                Console.WriteLine(">> Player 1 will control the Black pieces\n"
-                + ">> Player 2 will control the White pieces\n");
-
-                Player player = new Player((ColorChoice)1, pieces.black);
-            }
-            else if (pieceChoice == "w")
-            {
-                Console.WriteLine(">> Player 1 will control the White pieces\n"
-                + ">> Player 2 will control the Black pieces\n");
-
-                Player player = new Player((ColorChoice)2, pieces.white);
-            }
+            return (ColorChoice)orderChoice;
         }
 
-        public void OrderSelection()
-        {
-            Console.WriteLine("Who goes/plays first?"
-                + "\n\t>> The Black pieces <<"
-                + "\n\t>> The White pieces <<");
+        //public (Player, Player) PieceSelection((Piece[] white, Piece[] black) pieces)
+        //{
+        //    Console.WriteLine("There will be 2 players, choose amongst "
+        //        + "you who will be Player 1 and Player 2. "
+        //        + "Player 1 will choose his pieces first.\n"
+        //        + "Player 1 choose which pieces you want to use:"
+        //        + "\n\t>> Press B for the Black pieces <<"
+        //        + "\n\t>> Press W for the White pieces <<");
 
-            string orderChoice = null;
+        //    char pieceChoice = ' ';
 
-            while (orderChoice != "w" || orderChoice != "b")
-            {
-                orderChoice = Console.ReadLine();
-            }
+        //    while (pieceChoice != 'W' || pieceChoice != 'B')
+        //    {
+        //        pieceChoice = Console.ReadLine().ToUpper()[0];
+        //    }
 
-            if (orderChoice == "w")
-            {
-                Console.WriteLine("Player 1 will go/play first.");
-            }
-            else if (orderChoice == "b")
-            {
-                Console.WriteLine("Player 2 will go/play first.");
-            }
-        }
+        //    if (pieceChoice == 'B')
+        //    {
+        //        Console.WriteLine(">> Player 1 will control the Black pieces\n"
+        //        + ">> Player 2 will control the White pieces\n");
+
+        //        return (new Player((ColorChoice)pieceChoice, pieces.black), 
+        //            new Player((ColorChoice)pieceChoice, pieces.white));
+        //    }
+        //    else if (pieceChoice == 'W')
+        //    {
+        //        Console.WriteLine(">> Player 1 will control the White pieces\n"
+        //        + ">> Player 2 will control the Black pieces\n");
+
+        //        return (new Player((ColorChoice)pieceChoice, pieces.white), 
+        //            new Player((ColorChoice)pieceChoice, pieces.black));
+        //    }
+        //}
     }
 }
