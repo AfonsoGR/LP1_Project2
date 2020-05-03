@@ -62,10 +62,10 @@ namespace Felli
             else if (moveChoice == 7)
             {
                 if (piecePos.X > 0 && piecePos.Y < 5
-                    && board[piecePos.X - 1, piecePos.Y + 1] == 'o')
+                    && board[piecePos.X - 1, piecePos.Y - 1] == 'o')
                 {
                     board[piecePos.X, piecePos.Y] = 'o';
-                    piecePos += (-1, 1);
+                    piecePos += (-1, -1);
                     return null;
                 }
                 else
