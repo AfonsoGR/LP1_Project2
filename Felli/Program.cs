@@ -14,15 +14,11 @@ namespace Felli
 
             // Creates a new Board with the given dimensions
             Board board = new Board(5, 5);
+
+            GameSetup game = new GameSetup(board);
+
             Renderer r = new Renderer(board);
             r.Render();
-
-            Position pos = new Position(1, 2);
-
-            Console.WriteLine(pos.ToString());
-            pos += (1, 1);
-
-            Console.WriteLine(pos.ToString());
         }
     }
 }
