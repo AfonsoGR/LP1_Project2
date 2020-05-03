@@ -51,7 +51,7 @@ namespace Felli
                 {
                     if (board[x, y] != default)
                     {
-                        Console.Write($"{board[x, y]}");
+                        Console.Write($"{(char)board[x, y]}");
 
                         if (nLines < 2)
                         {

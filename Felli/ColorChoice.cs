@@ -5,7 +5,8 @@ namespace Felli
     /// </summary>
     public enum ColorChoice
     {
-        Black,
-        White
+        None = 'o',
+        Black = 'B',
+        White = 'W'
     }
 }
