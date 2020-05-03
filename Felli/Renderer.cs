@@ -53,11 +53,17 @@ namespace Felli
                     if (board[x, y] != default)
                     {
                         if (color == ColorChoice.White)
+                        {
                             ShowNumberID(x, y, piece.Item1);
+                        }
                         else if (color == ColorChoice.Black)
+                        {
                             ShowNumberID(x, y, piece.Item2);
+                        }
                         else
+                        {
                             Console.Write($"{(char)board[x, y]}");
+                        }
 
                         if (nLines < 2)
                         {
@@ -131,7 +137,9 @@ namespace Felli
                         Console.Write("  ");
                     }
                     else
+                    {
                         Console.Write("  ");
+                    }
                 }
                 else if (x + 1 < board.SizeX && x >= board.SizeX / 2)
                 {
@@ -142,7 +150,9 @@ namespace Felli
                         Console.Write("  ");
                     }
                     else
+                    {
                         Console.Write("  ");
+                    }
                 }
             }
         }

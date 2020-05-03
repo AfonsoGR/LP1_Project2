@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace Felli
+﻿namespace Felli
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Creates a new GameRules
             GameRules rules = new GameRules();

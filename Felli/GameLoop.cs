@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Felli
 {
-    class GameLoop
+    internal class GameLoop
     {
         private bool running;
-        Renderer render;
-        (Piece[] white, Piece[] black) piece;
-        readonly string choiceMessage;
+        private Renderer render;
+        private (Piece[] white, Piece[] black) piece;
+        private readonly string choiceMessage;
         private Board board;
-
-        Player player1;
-        Player player2;
+        private Player player1;
+        private Player player2;
         public GameLoop()
         {
             choiceMessage = "Which way do you wish to move the piece?\n" +
@@ -60,7 +57,7 @@ namespace Felli
             while (running)
             {
                 GetChoice(player1);
-                GetChoice(player2);
+                //GetChoice(player2);
 
                 render.Render("Press x if you want to quit now");
 
@@ -78,8 +75,19 @@ namespace Felli
 
             while (message != null)
             {
-                render.Render(choiceMessage, player.colorChoice);
-                message = player.playerPieces[0].PieceMovement();
+                render.Render($"Choose the piece you want to move 1 - " +
+                    $"{player.playerPieces.Length}", player.colorChoice);
+
+                int pieceChoice;
+                while (!int.TryParse(Console.ReadLine(), out pieceChoice) 
+                    || pieceChoice < 1 || pieceChoice > 
+                    player.playerPieces.Length)
+                {
+                    ;
+                }
+
+                render.Render(choiceMessage);
+                message = player.MovePiece(pieceChoice);
                 render.Render(message);
 
                 if (message != null)

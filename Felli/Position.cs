@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Felli
+﻿namespace Felli
 {
     public struct Position
     {
@@ -14,17 +10,29 @@ namespace Felli
             Y = y;
         }
 
-        public override bool Equals(object obj) => base.Equals(obj);
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
 
-        public override int GetHashCode() => base.GetHashCode();
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
-        public static bool operator ==(Position left, Position right) =>
-            left.X == right.X && left.Y == right.Y;
+        public static bool operator ==(Position left, Position right)
+        {
+            return left.X == right.X && left.Y == right.Y;
+        }
 
-        public static bool operator !=(Position left, Position right) => 
-            !(left == right);
+        public static bool operator !=(Position left, Position right)
+        {
+            return !(left == right);
+        }
 
-        public static Position operator +(Position pos, (int,int) add) =>
-            new Position(pos.X + add.Item1, pos.Y + add.Item2);
+        public static Position operator +(Position pos, (int, int) add)
+        {
+            return new Position(pos.X + add.Item1, pos.Y + add.Item2);
+        }
     }
 }

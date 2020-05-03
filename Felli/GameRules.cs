@@ -36,7 +36,7 @@ namespace Felli
                 + "pieces or can not move any of his pieces, therefore "
                 + "granting victory to his opponent.\n\n"
                 + ">>>>>> Press any key when you are ready to start <<<<<<");
-            
+
             // Waits for the user's input before proceeding 
             Console.ReadKey();
         }

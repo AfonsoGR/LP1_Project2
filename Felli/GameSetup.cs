@@ -15,7 +15,10 @@ namespace Felli
 
             for (int x = 0; x < board.SizeX; x++)
             {
-                if (x == board.SizeX / 2) id = 1;
+                if (x == board.SizeX / 2)
+                {
+                    id = 1;
+                }
 
                 for (int y = 0; y < board.SizeY; y++)
                 {

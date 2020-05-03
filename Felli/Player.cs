@@ -13,7 +13,19 @@ namespace Felli
         public Player(ColorChoice color, Piece[] pieces)
         {
             playerPieces = pieces;
-            colorChoice = color; 
+            colorChoice = color;
+        }
+
+        public string MovePiece(int pieceChoice)
+        {
+            for (int i = 0; i < playerPieces.Length; i++)
+            {
+                if (pieceChoice == playerPieces[i].id)
+                {
+                    return playerPieces[i].PieceMovement();
+                }
+            }
+            return null;
         }
     }
 }
