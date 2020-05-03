@@ -12,7 +12,8 @@ namespace Felli
         string choiceMessage;
         public GameLoop()
         {
-            choiceMessage = "Which way do you wish to move the piece?\n\n" +
+            choiceMessage = "Which way do you wish to move the piece?\n" +
+                    "We advise using the NUMPAD due to the layout.\n\n" +
                     "|7 -> Top Left |\t\t|8 ->    Top    |\t" +
                     "\t|9 ->   TopRight   |\n" +
                     "|4 ->   Left   |\t\t|  YOUR PIECE   |\t" +
