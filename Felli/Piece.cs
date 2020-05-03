@@ -8,10 +8,10 @@ namespace Felli
     public class Piece
     {
         public Position piecePos;
-        private char visuals;
+        private ColorChoice visuals;
         private Board board;
 
-        public Piece(char visuals, Board board, int row = 0, int column = 0)
+        public Piece(ColorChoice visuals, Board board, int row = 0, int column = 0)
         {
             piecePos = new Position(row, column);
             this.board = board;
@@ -33,7 +33,7 @@ namespace Felli
             if (moveChoice == 4)
             {
                 if (piecePos.Y > 0
-                    && board[piecePos.X, piecePos.Y - 1] == 'o')
+                    && board[piecePos.X, piecePos.Y - 1] == ColorChoice.None)
                 {
                     piecePos += (0, -1);
                     return null;
@@ -44,7 +44,7 @@ namespace Felli
             else if (moveChoice == 6)
             {
                 if (piecePos.Y < 5
-                    && board[piecePos.X, piecePos.Y + 1] == 'o')
+                    && board[piecePos.X, piecePos.Y + 1] == ColorChoice.None)
                 {
                     piecePos += (0, 1); 
                     return null;
@@ -55,7 +55,7 @@ namespace Felli
             else if (moveChoice == 7)
             {
                 if (piecePos.X > 0 && piecePos.Y < 5
-                    && board[piecePos.X - 1, piecePos.Y - 1] == 'o')
+                    && board[piecePos.X - 1, piecePos.Y - 1] == ColorChoice.None)
                 {
                     piecePos += (-1, -1);
                     return null;
@@ -66,7 +66,7 @@ namespace Felli
             else if (moveChoice == 1)
             {
                 if (piecePos.X < 5 && piecePos.Y > 0
-                    && board[piecePos.X + 1, piecePos.Y - 1] == 'o')
+                    && board[piecePos.X + 1, piecePos.Y - 1] == ColorChoice.None)
                 {
                     piecePos += (1, -1); 
                     return null;
@@ -77,7 +77,7 @@ namespace Felli
             else if (moveChoice == 8)
             {
                 if (piecePos.X > 0
-                    && board[piecePos.X - 1, piecePos.Y] == 'o')
+                    && board[piecePos.X - 1, piecePos.Y] == ColorChoice.None)
                 {
                     piecePos += (-1, 0);
                     return null;
@@ -88,7 +88,7 @@ namespace Felli
             else if (moveChoice == 2)
             {
                 if (piecePos.X < 5
-                    && board[piecePos.X + 1, piecePos.Y] == 'o')
+                    && board[piecePos.X + 1, piecePos.Y] == ColorChoice.None)
                 {
                     piecePos += (1, 0);
                     return null;
@@ -99,7 +99,7 @@ namespace Felli
             else if (moveChoice == 9)
             {
                 if (piecePos.X > 0 && piecePos.Y < 5
-                    && board[piecePos.X - 1, piecePos.Y + 1] == 'o')
+                    && board[piecePos.X - 1, piecePos.Y + 1] == ColorChoice.None)
                 {
                     piecePos += (-1, 1);
                     return null;
@@ -110,7 +110,7 @@ namespace Felli
             else if (moveChoice == 3)
             {
                 if (piecePos.X < 5 && piecePos.Y < 5
-                    && board[piecePos.X + 1, piecePos.Y + 1] == 'o')
+                    && board[piecePos.X + 1, piecePos.Y + 1] == ColorChoice.None)
                 {
                     piecePos += (1, 1);
                     return null;
