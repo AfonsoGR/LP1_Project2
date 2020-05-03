@@ -30,7 +30,40 @@ namespace Felli
             while (!int.TryParse(Console.ReadLine(), out moveChoice) ||
                  moveChoice < 1 || moveChoice > 9 || moveChoice == 5);
 
-            if (moveChoice == 4)
+            if (moveChoice == 1)
+            {
+                if (piecePos.X < 5 && piecePos.Y > 0
+                    && board[piecePos.X + 1, piecePos.Y - 1] == ColorChoice.None)
+                {
+                    piecePos += (1, -1); 
+                    return null;
+                }
+                else
+                    return "Your piece can't move that way.";
+            }
+            else if (moveChoice == 2)
+            {
+                if (piecePos.X < 5
+                    && board[piecePos.X + 1, piecePos.Y] == ColorChoice.None)
+                {
+                    piecePos += (1, 0);
+                    return null;
+                }
+                else
+                    return "Your piece can't move that way.";
+            }
+            else if (moveChoice == 3)
+            {
+                if (piecePos.X < 5 && piecePos.Y < 5
+                    && board[piecePos.X + 1, piecePos.Y + 1] == ColorChoice.None)
+                {
+                    piecePos += (1, 1);
+                    return null;
+                }
+                else
+                    return "Your piece can't move that way.";
+            }
+            else if (moveChoice == 4)
             {
                 if (piecePos.Y > 0
                     && board[piecePos.X, piecePos.Y - 1] == ColorChoice.None)
@@ -62,18 +95,7 @@ namespace Felli
                 }
                 else
                     return "Your piece can't move that way.";
-            }
-            else if (moveChoice == 1)
-            {
-                if (piecePos.X < 5 && piecePos.Y > 0
-                    && board[piecePos.X + 1, piecePos.Y - 1] == ColorChoice.None)
-                {
-                    piecePos += (1, -1); 
-                    return null;
-                }
-                else
-                    return "Your piece can't move that way.";
-            }
+            }            
             else if (moveChoice == 8)
             {
                 if (piecePos.X > 0
@@ -84,35 +106,13 @@ namespace Felli
                 }
                 else
                     return "Your piece can't move that way.";
-            }
-            else if (moveChoice == 2)
-            {
-                if (piecePos.X < 5
-                    && board[piecePos.X + 1, piecePos.Y] == ColorChoice.None)
-                {
-                    piecePos += (1, 0);
-                    return null;
-                }
-                else
-                    return "Your piece can't move that way.";
-            }
+            }            
             else if (moveChoice == 9)
             {
                 if (piecePos.X > 0 && piecePos.Y < 5
                     && board[piecePos.X - 1, piecePos.Y + 1] == ColorChoice.None)
                 {
                     piecePos += (-1, 1);
-                    return null;
-                }
-                else
-                    return "Your piece can't move that way.";
-            }
-            else if (moveChoice == 3)
-            {
-                if (piecePos.X < 5 && piecePos.Y < 5
-                    && board[piecePos.X + 1, piecePos.Y + 1] == ColorChoice.None)
-                {
-                    piecePos += (1, 1);
                     return null;
                 }
                 else
