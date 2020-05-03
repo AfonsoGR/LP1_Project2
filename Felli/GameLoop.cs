@@ -9,7 +9,11 @@ namespace Felli
         private bool running;
         Renderer render;
         (Piece[] white, Piece[] black) piece;
-        string choiceMessage;
+        readonly string choiceMessage;
+        private Board board;
+
+        Player player1;
+        Player player2;
         public GameLoop()
         {
             choiceMessage = "Which way do you wish to move the piece?\n" +
@@ -27,17 +31,36 @@ namespace Felli
         {
             GameSetup gameSetup = new GameSetup();
 
-            Board board = gameSetup.CreateBoard(5, 5);
+            board = gameSetup.CreateBoard(5, 5);
             piece = gameSetup.CreatePieces(board);
             render = new Renderer(board, piece);
 
+            render.Render("Who goes/plays first?"
+                + "\n\t>> The Black pieces <<"
+                + "\n\t>> The White pieces <<");
+
+            ColorChoice firstToPlay = gameSetup.OrderSelection();
+
+            if (firstToPlay == ColorChoice.White)
+            {
+                player1 = new Player(ColorChoice.White, piece.white);
+                player2 = new Player(ColorChoice.Black, piece.black);
+            }
+            else
+            {
+                player1 = new Player(ColorChoice.Black, piece.black);
+                player2 = new Player(ColorChoice.White, piece.white);
+            }
+
             Update();
         }
+
         private void Update()
         {
             while (running)
             {
-                GetChoice();
+                GetChoice(player1);
+                GetChoice(player2);
 
                 render.Render("Press x if you want to quit now");
 
@@ -48,20 +71,20 @@ namespace Felli
                 }
             }
         }
-        private void GetChoice()
+
+        private void GetChoice(Player player)
         {
             string message = "inv";
 
             while (message != null)
             {
-                render.Render(choiceMessage);
-                message = piece.white[0].PieceMovement();
+                render.Render(choiceMessage, player.colorChoice);
+                message = player.playerPieces[0].PieceMovement();
                 render.Render(message);
 
                 if (message != null)
                 {
                     Console.ReadKey();
-                    GetChoice();
                 }
             }
         }

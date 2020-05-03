@@ -8,10 +8,12 @@ namespace Felli
     public class Player
     {
         public Piece[] playerPieces;
+        public ColorChoice colorChoice;
+
         public Player(ColorChoice color, Piece[] pieces)
         {
             playerPieces = pieces;
-            ColorChoice colorChoice = color; 
+            colorChoice = color; 
         }
     }
 }
