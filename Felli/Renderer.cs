@@ -6,15 +6,19 @@ namespace Felli
     {
         private readonly Board board;
         private readonly string[] connectors;
+        private (Pieces[], Pieces[]) pieces;
 
-        public Renderer(Board board)
+        public Renderer(Board board, (Pieces[], Pieces[]) pieces)
         {
+            this.pieces = pieces;
             connectors = new string[6] { @"\", "|", "/", "/", "|", @"\" };
             this.board = board;
         }
 
         public void Render()
         {
+            SetBoardVisuals();
+
             // Clears the console
             Console.Clear();
 
@@ -63,6 +67,19 @@ namespace Felli
             }
         }
 
+        private void SetBoardVisuals() 
+        {
+            board.SetBoardToInitState();
+
+            for (int white = 0; white < pieces.Item1.Length; white++)
+            {
+                pieces.Item1[white].PieceOnBoard();
+            }
+            for (int black = 0; black < pieces.Item2.Length; black++)
+            {
+                pieces.Item2[black].PieceOnBoard();
+            }
+        }
         private void DrawSpaces(int x, int z)
         {
             if (x == board.SizeX / 2)

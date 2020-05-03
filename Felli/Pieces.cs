@@ -8,21 +8,22 @@ namespace Felli
     public class Pieces
     {
         public Position piecePos;
-        public char visuals;
+        private char visuals;
+        private Board board;
 
-        public Pieces(char visuals, int row = 0, int column = 0)
+        public Pieces(char visuals, Board board, int row = 0, int column = 0)
         {
             piecePos = new Position(row, column);
-
+            this.board = board;
             this.visuals = visuals;
         }
 
-        public void PieceOnBoard(Board board)
+        public void PieceOnBoard()
         {
             board[piecePos.X, piecePos.Y] = visuals;
         }
 
-        public void PieceMovement(Board board)
+        public void PieceMovement()
         {
             Console.WriteLine("Which way do you wish to move the piece?\n"
             + "\t1 -> Left\t3 -> Top Left\t\t5 -> Top\t7 -> TopRight\n"
@@ -46,7 +47,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement();
                 }
             }
             else if (moveChoice == 2)
@@ -61,7 +62,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement();
                 }
             }
             else if (moveChoice == 3)
@@ -76,7 +77,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement();
                 }
             }
             else if (moveChoice == 4)
@@ -91,7 +92,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement();
                 }                
             }
             else if (moveChoice == 5)
@@ -106,7 +107,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement();
                 }                
             }
             else if (moveChoice == 6)
@@ -121,7 +122,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement();
                 }
             }
             else if (moveChoice == 7)
@@ -136,7 +137,7 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement();
                 }
             }
             else if (moveChoice == 8)
@@ -151,14 +152,14 @@ namespace Felli
                 {
                     Console.WriteLine("Your piece can't move that way.\n");
 
-                    PieceMovement(board);
+                    PieceMovement();
                 }
             }
             else
             {
                 Console.WriteLine("That choice isn't valid.\n");
 
-                PieceMovement(board);
+                PieceMovement();
             }
         }
     }

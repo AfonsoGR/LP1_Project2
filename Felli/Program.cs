@@ -12,38 +12,16 @@ namespace Felli
             // Calls the GR method from GameRules
             gameRules.GR(); 
 
-            // Creates a new Board with the given dimensions
-            Board board = new Board(5, 5);
-            board.SetBoardToInitState();
-
-            Renderer r = new Renderer(board);
             GameSetup game = new GameSetup();
 
-            (Pieces[] white, Pieces[] black) pieces = game.SetupPieces(board);
-
-            foreach(Pieces a in pieces.white)
-            {
-                a.PieceOnBoard(board);
-            }
-            foreach (Pieces a in pieces.black)
-            {
-                a.PieceOnBoard(board);
-            }
+            Board board = game.CreateBoard(5, 5);
+            (Pieces[] white, Pieces[] black) pieces = game.CreatePieces(board);
+            Renderer r = new Renderer(board, pieces);
 
             while (true)
             {
                 r.Render();
-                pieces.white[0].PieceMovement(board);
-                board.SetBoardToInitState();
-
-                foreach (Pieces a in pieces.white)
-                {
-                    a.PieceOnBoard(board);
-                }
-                foreach (Pieces a in pieces.black)
-                {
-                    a.PieceOnBoard(board);
-                }
+                pieces.white[0].PieceMovement();
             }
         }
     }
