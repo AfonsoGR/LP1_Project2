@@ -25,7 +25,9 @@ namespace Felli
 
         public void PieceMovement()
         {
-            Console.WriteLine("Which way do you wish to move the piece?\n"
+            Console.WriteLine("Which way do you wish to move the piece?" 
+            + "We advise using the NUMPAD to select your option since it "
+            + "has a corresponding layout.\n"
             + "\t1 -> Left\t3 -> Top Left\t\t5 -> Top\t7 -> TopRight\n"
             + "\t2 -> Right\t4 -> Bottom Left\t6 -> Bottom\t8 -> "
             + "Bottom Right");
@@ -33,9 +35,9 @@ namespace Felli
             int moveChoice;
 
             while (!int.TryParse(Console.ReadLine(), out moveChoice) ||
-                moveChoice < 1 || moveChoice > 8);
+                moveChoice < 1 || moveChoice > 9 || moveChoice == 5);
 
-            if (moveChoice == 1)
+            if (moveChoice == 4)
             {
                 if (piecePos.Y > 0 
                     && board[piecePos.X, piecePos.Y - 1] == 'o')
@@ -50,7 +52,7 @@ namespace Felli
                     PieceMovement();
                 }
             }
-            else if (moveChoice == 2)
+            else if (moveChoice == 6)
             {
                 if (piecePos.Y < 5 
                     && board[piecePos.X, piecePos.Y + 1] == 'o')
@@ -65,7 +67,7 @@ namespace Felli
                     PieceMovement();
                 }
             }
-            else if (moveChoice == 3)
+            else if (moveChoice == 7)
             {
                 if (piecePos.X > 0 && piecePos.Y < 5 
                     && board[piecePos.X - 1, piecePos.Y + 1] == 'o')
@@ -80,7 +82,7 @@ namespace Felli
                     PieceMovement();
                 }
             }
-            else if (moveChoice == 4)
+            else if (moveChoice == 1)
             {
                 if (piecePos.X < 5 && piecePos.Y > 0 
                     && board[piecePos.X + 1, piecePos.Y - 1] == 'o')
@@ -95,7 +97,7 @@ namespace Felli
                     PieceMovement();
                 }                
             }
-            else if (moveChoice == 5)
+            else if (moveChoice == 8)
             {
                 if (piecePos.X > 0 
                     && board[piecePos.X -1, piecePos.Y] == 'o')
@@ -110,7 +112,7 @@ namespace Felli
                     PieceMovement();
                 }                
             }
-            else if (moveChoice == 6)
+            else if (moveChoice == 2)
             {
                 if (piecePos.X < 5 
                     && board[piecePos.X + 1, piecePos.Y] == 'o')
@@ -125,7 +127,7 @@ namespace Felli
                     PieceMovement();
                 }
             }
-            else if (moveChoice == 7)
+            else if (moveChoice == 9)
             {
                 if (piecePos.X > 0 && piecePos.Y < 5 
                     && board[piecePos.X - 1, piecePos.Y + 1] == 'o')
@@ -140,7 +142,7 @@ namespace Felli
                     PieceMovement();
                 }
             }
-            else if (moveChoice == 8)
+            else if (moveChoice == 3)
             {
                 if (piecePos.X < 5 && piecePos.Y < 5 
                     && board[piecePos.X + 1, piecePos.Y + 1] == 'o')
