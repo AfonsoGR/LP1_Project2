@@ -36,7 +36,6 @@ namespace Felli
                     && board[piecePos.X, piecePos.Y - 1] == 'o')
                 {
                     piecePos += (0, -1);
-
                     return null;
                 }
                 else
@@ -60,9 +59,9 @@ namespace Felli
             else if (moveChoice == 7)
             {
                 if (piecePos.X > 0 && piecePos.Y < 5
-                    && board[piecePos.X - 1, piecePos.Y + 1] == 'o')
+                    && board[piecePos.X - 1, piecePos.Y - 1] == 'o')
                 {
-                    piecePos += (-1, 1);
+                    piecePos += (-1, -1);
                     return null;
                 }
                 else
@@ -76,7 +75,6 @@ namespace Felli
                     && board[piecePos.X + 1, piecePos.Y - 1] == 'o')
                 {
                     piecePos += (1, -1); 
-                    
                     return null;
                 }
                 else
@@ -90,7 +88,6 @@ namespace Felli
                     && board[piecePos.X - 1, piecePos.Y] == 'o')
                 {
                     piecePos += (-1, 0);
-
                     return null;
                 }
                 else
@@ -104,7 +101,6 @@ namespace Felli
                     && board[piecePos.X + 1, piecePos.Y] == 'o')
                 {
                     piecePos += (1, 0);
-
                     return null;
                 }
                 else
@@ -118,7 +114,6 @@ namespace Felli
                     && board[piecePos.X - 1, piecePos.Y + 1] == 'o')
                 {
                     piecePos += (-1, 1);
-
                     return null;
                 }
                 else
@@ -132,7 +127,6 @@ namespace Felli
                     && board[piecePos.X + 1, piecePos.Y + 1] == 'o')
                 {
                     piecePos += (1, 1);
-
                     return null;
                 }
                 else
