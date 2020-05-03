@@ -5,7 +5,7 @@ namespace Felli
 {
     public class WinConditions
     {
-        public void WinCheck(Board board, Pieces pieces)
+        public void WinCheck(Board board, Piece piece)
         {
             List<(int, int)> neighbours = new List<(int, int)>();
 
@@ -17,11 +17,11 @@ namespace Felli
                 {
                     // Converts negative values to positives in the X axis
                     float distX = Math.Abs(Math.Abs(x) -
-                        Math.Abs(pieces.piecePos.X));
+                        Math.Abs(piece.piecePos.X));
 
                     // Converts negative values to positives in the Y axis
                     float distY = Math.Abs(Math.Abs(y) -
-                        Math.Abs(pieces.piecePos.Y));
+                        Math.Abs(piece.piecePos.Y));
 
                     // Checks if there is another piece in the diagonal
                     if ((distX == 1 && distY == 1))

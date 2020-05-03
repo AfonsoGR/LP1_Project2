@@ -6,11 +6,11 @@ namespace Felli
     {
         private readonly Board board;
         private readonly string[] connectors;
-        private (Pieces[], Pieces[]) pieces;
+        private (Piece[], Piece[]) piece;
 
-        public Renderer(Board board, (Pieces[], Pieces[]) pieces)
+        public Renderer(Board board, (Piece[], Piece[]) piece)
         {
-            this.pieces = pieces;
+            this.piece = piece;
             connectors = new string[6] { @"\", "|", "/", "/", "|", @"\" };
             this.board = board;
         }
@@ -72,13 +72,13 @@ namespace Felli
         {
             board.SetBoardToInitState();
 
-            for (int white = 0; white < pieces.Item1.Length; white++)
+            for (int white = 0; white < piece.Item1.Length; white++)
             {
-                pieces.Item1[white].PieceOnBoard();
+                piece.Item1[white].PieceOnBoard();
             }
-            for (int black = 0; black < pieces.Item2.Length; black++)
+            for (int black = 0; black < piece.Item2.Length; black++)
             {
-                pieces.Item2[black].PieceOnBoard();
+                piece.Item2[black].PieceOnBoard();
             }
         }
 

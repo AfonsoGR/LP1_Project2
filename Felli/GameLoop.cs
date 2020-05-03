@@ -8,7 +8,7 @@ namespace Felli
     {
         private bool running;
         Renderer render;
-        (Pieces[] white, Pieces[] black) pieces;
+        (Piece[] white, Piece[] black) piece;
         string choiceMessage;
         public GameLoop()
         {
@@ -27,8 +27,8 @@ namespace Felli
             GameSetup gameSetup = new GameSetup();
 
             Board board = gameSetup.CreateBoard(5, 5);
-            pieces = gameSetup.CreatePieces(board);
-            render = new Renderer(board, pieces);
+            piece = gameSetup.CreatePieces(board);
+            render = new Renderer(board, piece);
 
             Update();
         }
@@ -54,7 +54,7 @@ namespace Felli
             while (message != null)
             {
                 render.Render(choiceMessage);
-                message = pieces.white[0].PieceMovement();
+                message = piece.white[0].PieceMovement();
                 render.Render(message);
 
                 if (message != null)

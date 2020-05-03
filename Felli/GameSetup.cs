@@ -6,11 +6,11 @@ namespace Felli
 {
     public class GameSetup
     {
-        public (Pieces[], Pieces[]) CreatePieces(Board board)
+        public (Piece[], Piece[]) CreatePieces(Board board)
         {
-            List<Pieces> blackPieces = new List<Pieces>();
+            List<Piece> blackPieces = new List<Piece>();
 
-            List<Pieces> whitePieces = new List<Pieces>();
+            List<Piece> whitePieces = new List<Piece>();
 
             for (int x = 0; x < board.SizeX; x++)
             {
@@ -18,11 +18,11 @@ namespace Felli
                 {
                     if (board[x, y] == 'o' && x < board.SizeX / 2)
                     {
-                        blackPieces.Add(new Pieces('B', board, x, y));
+                        blackPieces.Add(new Piece('B', board, x, y));
                     }
                     else if (board[x, y] == 'o' && x > board.SizeX / 2)
                     {
-                        whitePieces.Add(new Pieces('W', board, x, y));
+                        whitePieces.Add(new Piece('W', board, x, y));
                     }
                 }
             }

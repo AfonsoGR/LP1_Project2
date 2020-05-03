@@ -5,13 +5,13 @@ namespace Felli
     /// <summary>
     /// Sets up the game pieces to be placed on the board and their movement
     /// </summary>
-    public class Pieces
+    public class Piece
     {
         public Position piecePos;
         private char visuals;
         private Board board;
 
-        public Pieces(char visuals, Board board, int row = 0, int column = 0)
+        public Piece(char visuals, Board board, int row = 0, int column = 0)
         {
             piecePos = new Position(row, column);
             this.board = board;
