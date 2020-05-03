@@ -9,7 +9,7 @@ namespace Felli
         private bool running;
         Renderer render;
         (Piece[] white, Piece[] black) piece;
-        string choiceMessage;
+        readonly string choiceMessage;
         public GameLoop()
         {
             choiceMessage = "Which way do you wish to move the piece?\n\n" +
