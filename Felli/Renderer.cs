@@ -15,7 +15,8 @@ namespace Felli
             this.board = board;
         }
 
-        public void Render(string message = null)
+        public void Render(string message = null,
+            ColorChoice color = ColorChoice.None)
         {
             SetBoardVisuals();
 
@@ -51,7 +52,12 @@ namespace Felli
                 {
                     if (board[x, y] != default)
                     {
-                        Console.Write($"{(char)board[x, y]}");
+                        if (color == ColorChoice.White)
+                            ShowNumberID(x, y, piece.Item1);
+                        else if (color == ColorChoice.Black)
+                            ShowNumberID(x, y, piece.Item2);
+                        else
+                            Console.Write($"{(char)board[x, y]}");
 
                         if (nLines < 2)
                         {
@@ -67,7 +73,19 @@ namespace Felli
             }
             DrawMessageBox(message);
         }
-
+        private void ShowNumberID(int k, int l, Piece[] piece)
+        {
+            Console.Write($"{(char)board[k, l]}");
+            for (int x = 0; x < piece.Length; x++)
+            {
+                if (piece[x].piecePos.X == k &&
+                    piece[x].piecePos.Y == l)
+                {
+                    Console.Write(piece[x].id);
+                    break;
+                }
+            }
+        }
         private void SetBoardVisuals()
         {
             board.SetBoardToInitState();

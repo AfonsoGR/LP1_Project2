@@ -61,6 +61,7 @@ namespace Felli
             {
                 GetChoice(player1);
                 GetChoice(player2);
+
                 render.Render("Press x if you want to quit now");
 
                 char.TryParse(Console.ReadLine(), out char charr);
@@ -77,7 +78,7 @@ namespace Felli
 
             while (message != null)
             {
-                render.Render(choiceMessage);
+                render.Render(choiceMessage, player.colorChoice);
                 message = player.playerPieces[0].PieceMovement();
                 render.Render(message);
 

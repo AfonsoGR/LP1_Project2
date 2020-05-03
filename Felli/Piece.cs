@@ -8,11 +8,14 @@ namespace Felli
     public class Piece
     {
         public Position piecePos;
-        private ColorChoice visuals;
+        public ColorChoice visuals;
         private Board board;
+        public int id;
 
-        public Piece(ColorChoice visuals, Board board, int row = 0, int column = 0)
+        public Piece(ColorChoice visuals, Board board, int row = 0,
+            int column = 0, int iD = 0)
         {
+            id = iD;
             piecePos = new Position(row, column);
             this.board = board;
             this.visuals = visuals;
