@@ -40,7 +40,7 @@ namespace Felli
                     z--;
                 }
 
-                DrawSpaces(l, x, z);
+                DrawSpaces(x, z);
 
                 // A loop for the height of the board
                 for (int y = 0; y < board.SizeY; y++)
@@ -54,7 +54,7 @@ namespace Felli
                             nLines++;
                             for (int o = 0; o < l; o++)
                             {
-                                Console.Write("-");
+                                Console.Write("--");
                             }
                         }
                     }
@@ -63,7 +63,7 @@ namespace Felli
             }
         }
 
-        private void DrawSpaces(int l, int x, int z)
+        private void DrawSpaces(int x, int z)
         {
             if (x == board.SizeX / 2)
             {
@@ -72,7 +72,7 @@ namespace Felli
 
             for (int p = 0; p < z; p++)
             {
-                Console.Write(" ");
+                Console.Write("  ");
             }
         }
 
@@ -89,6 +89,8 @@ namespace Felli
                     if (board[x, y] != default)
                     {
                         Console.Write(connectors[ç]); ç++;
+
+                        Console.Write("  ");
                     }
                     else
                         Console.Write("  ");
@@ -98,6 +100,8 @@ namespace Felli
                     if (board[x + 1, y] != default)
                     {
                         Console.Write(connectors[ç]); ç++;
+
+                        Console.Write("  ");
                     }
                     else
                         Console.Write("  ");
