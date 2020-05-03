@@ -32,11 +32,22 @@ namespace Felli
 
             if (moveChoice == 1)
             {
-                if (piecePos.X < 5 && piecePos.Y > 0
-                    && board[piecePos.X + 1, piecePos.Y - 1] == ColorChoice.None)
+                if (piecePos.X < 5 && piecePos.Y > 0)
                 {
-                    piecePos += (1, -1); 
-                    return null;
+                    if ((board[piecePos.X + 1, piecePos.Y - 1] != visuals && 
+                    board[piecePos.X + 1, piecePos.Y -1] != ColorChoice.None) &&
+                    (board[piecePos.X + 2, piecePos.Y - 2] == ColorChoice.None))
+                    {
+                        piecePos += (2, -2);
+                        return null;
+                    }
+                    else if (board[piecePos.X + 1, piecePos.Y - 1] == ColorChoice.None)
+                    {
+                        piecePos += (1, -1); 
+                        return null;
+                    }
+                    else
+                        return "Your piece can't move that way.";
                 }
                 else
                     return "Your piece can't move that way.";
