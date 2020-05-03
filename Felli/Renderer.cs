@@ -2,7 +2,7 @@
 
 namespace Felli
 {
-    class Renderer
+    internal class Renderer
     {
         private readonly Board board;
         private readonly string[] connectors;
@@ -15,7 +15,7 @@ namespace Felli
             this.board = board;
         }
 
-        public void Render()
+        public void Render(string message = null)
         {
             SetBoardVisuals();
 
@@ -65,9 +65,10 @@ namespace Felli
                 }
                 DrawConnectors(x);
             }
+            DrawMessageBox(message);
         }
 
-        private void SetBoardVisuals() 
+        private void SetBoardVisuals()
         {
             board.SetBoardToInitState();
 
@@ -80,8 +81,10 @@ namespace Felli
                 pieces.Item2[black].PieceOnBoard();
             }
         }
+
         private void DrawSpaces(int x, int z)
         {
+            Console.Write("  ");
             if (x == board.SizeX / 2)
             {
                 Console.Write(" ");
@@ -95,7 +98,7 @@ namespace Felli
 
         private void DrawConnectors(int x)
         {
-            Console.Write("\n");
+            Console.Write("\n  ");
 
             int ç = x < board.SizeX / 2 ? 0 : 3;
 
@@ -123,6 +126,28 @@ namespace Felli
                     else
                         Console.Write("  ");
                 }
+            }
+        }
+        private void DrawMessageBox(string message)
+        {
+            string flair = "--------------------.--------------------." +
+                "---------------------.--------------------";
+            if (message != null)
+            {
+                Console.WriteLine();
+                Console.WriteLine(flair);
+                int spaceLen = (83 - message.Length) / 2;
+                for (int p = 0; p < spaceLen; p++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write(message);
+                for (int p = 0; p < spaceLen; p++)
+                {
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+                Console.WriteLine(flair);
             }
         }
     }
