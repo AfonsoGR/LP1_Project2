@@ -15,7 +15,7 @@ namespace Felli
             // Creates a new Board with the given dimensions
             Board board = new Board(5, 5);
 
-            GameSetup game = new GameSetup(board);
+            GameSetup game = new GameSetup();
 
             Renderer r = new Renderer(board);
             r.Render();

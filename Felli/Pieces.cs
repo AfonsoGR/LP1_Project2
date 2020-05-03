@@ -41,7 +41,6 @@ namespace Felli
                 {
                     piecePos += (-1, 0);
                 }
-                // ver se dá para comer a peça, falta verificar a cor
                 // else if (piecePos.X > 0 && 
                 //     board[piecePos.X - 2, piecePos.Y] == 'o')
                 // {
@@ -62,7 +61,6 @@ namespace Felli
                 {
                     piecePos += (1, 0);;
                 }
-                // ver se dá para comer a peça, falta verificar a cor
                 // else if (piecePos.X < 5 && 
                 //     board[piecePos.X + 2, piecePos.Y] == 'o')
                 // {
@@ -83,7 +81,6 @@ namespace Felli
                 {
                     piecePos += (-1, -1);;
                 }
-                // ver se dá para comer a peça, falta verificar a cor
                 // else if ((piecePos.X > 0 && piecePos.Y > 0 && 
                 //     board[piecePos.X - 2, piecePos.Y - 2] == 'o')
                 // {
@@ -104,7 +101,6 @@ namespace Felli
                 {
                     piecePos += (-1, 1);
                 }
-                // ver se dá para comer a peça, falta verificar a cor
                 // else if (piecePos.X > 0 && piecePos.Y < 5 && 
                 //     board[piecePos.X - 2, piecePos.Y + 2] == 'o')
                 // {
@@ -125,7 +121,6 @@ namespace Felli
                 {
                     piecePos += (0, -1);
                 }
-                // ver se dá para comer a peça, falta verificar a cor
                 // else if (piecePos.X > 0 && 
                 //     board[piecePos.X, piecePos.Y - 2] == 'o')
                 // {
@@ -146,7 +141,6 @@ namespace Felli
                 {
                     piecePos += (0, 1);
                 }
-                // ver se dá para comer a peça, falta verificar a cor
                 // else if (piecePos.X < 5 && 
                 //     board[piecePos.X, piecePos.Y + 2] == 'o')
                 // {
@@ -167,7 +161,6 @@ namespace Felli
                 {
                     piecePos += (1, -1);
                 }
-                // ver se dá para comer a peça, falta verificar a cor
                 // else if (piecePos.X < 5 && piecePos.Y > 0 && 
                 //     board[piecePos.X + 2, piecePos.Y - 2] == 'o')
                 // {
@@ -188,7 +181,6 @@ namespace Felli
                 {
                     piecePos += (1, 1);
                 }
-                // ver se dá para comer a peça, falta verificar a cor
                 // else if (piecePos.X < 5 && piecePos.Y < 5 && 
                 //     board[piecePos.X + 2, piecePos.Y + 2] == 'o')
                 // {
