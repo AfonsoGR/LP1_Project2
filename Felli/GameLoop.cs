@@ -34,8 +34,8 @@ namespace Felli
             render = new Renderer(board, piece);
 
             render.Render("Who goes/plays first?"
-                + "\n\t>> The Black pieces <<"
-                + "\n\t>> The White pieces <<");
+                + "\n\t>> For the Black pieces press B <<"
+                + "\n\t>> For the White pieces press W <<");
 
             ColorChoice firstToPlay = gameSetup.OrderSelection();
 
