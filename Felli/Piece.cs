@@ -26,12 +26,13 @@ namespace Felli
             board[piecePos.X, piecePos.Y] = visuals;
         }
 
-        private string DoSomething(int x, int y)
+        private string MovementCoordinates(int x, int y)
         {
             if ((board[piecePos.X + x, piecePos.Y + y] != visuals &&
                 board[piecePos.X + x, piecePos.Y + y] != ColorChoice.None) &&
-                (board[piecePos.X + (x + x), piecePos.Y + (y + y)] == ColorChoice.None))
-            {
+                (board[piecePos.X + (x + x), piecePos.Y + (y + y)] 
+                == ColorChoice.None))
+            { 
                 piecePos += ((x + x), (y + y));
                 return null;
             }
@@ -60,175 +61,51 @@ namespace Felli
             }
             if (moveChoice == 1)
             {
-                return piecePos.X < 5 && piecePos.Y > 0 ? DoSomething(1, -1) 
+                return piecePos.X < 5 && piecePos.Y > 0 ? 
+                    MovementCoordinates(1, -1) 
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 2)
             {
-                if (piecePos.X < 5)
-                {
-                    return DoSomething(1, 0);
-                }
-                else
-                {
-                    return "Your piece can't move that way.";
-                }
+                return piecePos.X < 5 ? 
+                    MovementCoordinates(1, 0) 
+                    : "Your piece can't move that way.";
             }
             else if (moveChoice == 3)
             {
-                if (piecePos.X < 5 && piecePos.Y < 5)
-                {
-                    if ((board[piecePos.X + 1, piecePos.Y + 1] != visuals) &&
-                        (board[piecePos.X + 1, piecePos.Y + 1] != ColorChoice.None)
-                        && (board[piecePos.X + 2, piecePos.Y + 2] == ColorChoice.None))
-                    {
-                        piecePos += (2, 2);
-                        return null;
-                    }
-                    else if (board[piecePos.X + 1, piecePos.Y + 1] == ColorChoice.None)
-                    {
-                        piecePos += (1, 1);
-                        return null;
-                    }
-                    else
-                    {
-                        return "Your piece can't move that way.";
-                    }
-                }
-                else
-                {
-                    return "Your piece can't move that way.";
-                }
+                return piecePos.X < 5 && piecePos.Y < 5 ? 
+                    MovementCoordinates(1, 1) 
+                    : "Your piece can't move that way.";
             }
             else if (moveChoice == 4)
             {
-                if (piecePos.Y > 0)
-                {
-                    if ((board[piecePos.X, piecePos.Y - 1] != visuals) &&
-                        (board[piecePos.X, piecePos.Y - 1] != ColorChoice.None)
-                        && (board[piecePos.X, piecePos.Y - 2] == ColorChoice.None))
-                    {
-                        piecePos += (0, -2);
-                        return null;
-                    }
-                    else if (board[piecePos.X, piecePos.Y - 1] == ColorChoice.None)
-                    {
-                        piecePos += (0, -1);
-                        return null;
-                    }
-                    else
-                    {
-                        return "Your piece can't move that way.";
-                    }
-                }
-                else
-                {
-                    return "Your piece can't move that way.";
-                }
+                return piecePos.Y > 0 ? 
+                    MovementCoordinates(0, -1) 
+                    : "Your piece can't move that way.";
             }
             else if (moveChoice == 6)
             {
-                if (piecePos.Y < 5)
-                {
-                    if ((board[piecePos.X, piecePos.Y + 1] != visuals) &&
-                        (board[piecePos.X, piecePos.Y + 1] != ColorChoice.None)
-                        && (board[piecePos.X, piecePos.Y + 2] == ColorChoice.None))
-                    {
-                        piecePos += (0, 2);
-                        return null;
-                    }
-                    else if (board[piecePos.X, piecePos.Y + 1] == ColorChoice.None)
-                    {
-                        piecePos += (0, 1);
-                        return null;
-                    }
-                    else
-                    {
-                        return "Your piece can't move that way.";
-                    }
-                }
-                else
-                {
-                    return "Your piece can't move that way.";
-                }
+                return piecePos.Y < 5 ? 
+                    MovementCoordinates(0, 1) 
+                    : "Your piece can't move that way.";
             }
             else if (moveChoice == 7)
             {
-                if (piecePos.X > 0 && piecePos.Y < 5)
-                {
-                    if ((board[piecePos.X - 1, piecePos.Y - 1] != visuals) &&
-                        (board[piecePos.X - 1, piecePos.Y - 1] != ColorChoice.None)
-                        && (board[piecePos.X - 2, piecePos.Y - 2] == ColorChoice.None))
-                    {
-                        piecePos += (-2, -2);
-                        return null;
-                    }
-                    else if (board[piecePos.X - 1, piecePos.Y - 1] == ColorChoice.None)
-                    {
-                        piecePos += (-1, -1);
-                        return null;
-                    }
-                    else
-                    {
-                        return "Your piece can't move that way.";
-                    }
-                }
-                else
-                {
-                    return "Your piece can't move that way.";
-                }
+                return piecePos.X > 0 && piecePos.Y > 0 ? 
+                    MovementCoordinates(-1, -1) 
+                    : "Your piece can't move that way.";
             }
             else if (moveChoice == 8)
             {
-                if (piecePos.X > 0)
-                {
-                    if ((board[piecePos.X - 1, piecePos.Y] != visuals) &&
-                        (board[piecePos.X - 1, piecePos.Y] != ColorChoice.None)
-                        && (board[piecePos.X - 2, piecePos.Y] == ColorChoice.None))
-                    {
-                        piecePos += (-2, 0);
-                        return null;
-                    }
-                    else if (board[piecePos.X - 1, piecePos.Y] == ColorChoice.None)
-                    {
-                        piecePos += (-1, 0);
-                        return null;
-                    }
-                    else
-                    {
-                        return "Your piece can't move that way.";
-                    }
-                }
-                else
-                {
-                    return "Your piece can't move that way.";
-                }
+                return piecePos.X > 0 ? 
+                    MovementCoordinates(-1, 0) 
+                    : "Your piece can't move that way.";
             }
             else if (moveChoice == 9)
             {
-                if (piecePos.X > 0 && piecePos.Y < 5)
-                {
-                    if ((board[piecePos.X - 1, piecePos.Y + 1] != visuals) &&
-                        (board[piecePos.X - 1, piecePos.Y + 1] != ColorChoice.None)
-                        && (board[piecePos.X - 2, piecePos.Y + 2] == ColorChoice.None))
-                    {
-                        piecePos += (-2, 2);
-                        return null;
-                    }
-                    else if (board[piecePos.X - 1, piecePos.Y + 1] == ColorChoice.None)
-                    {
-                        piecePos += (-1, 1);
-                        return null;
-                    }
-                    else
-                    {
-                        return "Your piece can't move that way.";
-                    }
-                }
-                else
-                {
-                    return "Your piece can't move that way.";
-                }
+                return piecePos.X > 0 && piecePos.Y < 5 ? 
+                    MovementCoordinates(-1, 1) 
+                    : "Your piece can't move that way.";
             }
             else
             {

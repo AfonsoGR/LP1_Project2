@@ -17,7 +17,8 @@ namespace Felli
                     "|4 ->   Left   |\t\t|  YOUR PIECE   |\t" +
                     "\t|6 ->    Right     |\n" +
                     "|1 -> Bot Left |\t\t|2 ->  Bottom   |\t" +
-                    "\t|3 -> Bottom Right |\n (press 0 to choose another piece";
+                    "\t|3 -> Bottom Right |\n\n" +
+                    ">> Press 0 to choose another piece <<";
             running = true;
             game = new GameInstance(5, 5);
         }
@@ -35,8 +36,8 @@ namespace Felli
             }
 
             game.Graphics.Render("Who goes/plays first?"
-                + "\n\t>> The Black pieces <<"
-                + "\n\t>> The White pieces <<");
+                + "\n\t>> For the Black pieces press B <<"
+                + "\n\t>> For the White pieces press W <<");
 
             game.OrderSelection();
             Update();
