@@ -92,13 +92,11 @@ namespace Felli
 
         public string PieceMovement(Player opositePlayer, int moveChoice)
         {
-            if (piecePos.X != board.SizeX / 2 && piecePos.Y == board.SizeY / 2)
+            string invalidMove = Restrictions(moveChoice);
+            
+            if(invalidMove != null)
             {
-                if (moveChoice == 1 || moveChoice == 3 ||
-                    moveChoice == 7 || moveChoice == 9)
-                {
-                    return "Your piece can't move that way";
-                }
+                return invalidMove;
             }
 
             if (moveChoice == 0)
@@ -157,6 +155,51 @@ namespace Felli
             {
                 return "Please select valid option.";
             }
+        }
+
+        private string Restrictions(int moveChoice)
+        {
+            if (piecePos.X != board.SizeX / 2 && piecePos.Y == board.SizeY / 2)
+            {
+                if (moveChoice == 1 || moveChoice == 3 ||
+                    moveChoice == 7 || moveChoice == 9)
+                {
+                    return "Your piece can't move that way";
+                }
+            }
+
+            if (piecePos.X == 1 && piecePos.Y == 1)
+            {
+                if (moveChoice == 9)
+                {
+                    return "Your piece can't move that way";
+                }
+            }
+
+            if (piecePos.X == 3 && piecePos.Y == 1)
+            {
+                if (moveChoice == 3)
+                {
+                    return "Your piece can't move that way";
+                }
+            }
+
+            if (piecePos.X == 1 && piecePos.Y == 3)
+            {
+                if (moveChoice == 7)
+                {
+                    return "Your piece can't move that way";
+                }
+            }
+
+            if (piecePos.X == 3 && piecePos.Y == 3)
+            {
+                if (moveChoice == 1)
+                {
+                    return "Your piece can't move that way";
+                }
+            }
+            return null;
         }
     }
 }
