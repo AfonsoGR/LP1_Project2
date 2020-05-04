@@ -38,7 +38,8 @@ namespace Felli
             for (int k = 0; k < neighbours.Count; k++)
             {
                 // Checks if neighbour cell is occupied
-                if (board[neighbours[k].Item1, neighbours[k].Item2] != ColorChoice.None)
+                if (board[neighbours[k].Item1, 
+                    neighbours[k].Item2] != ColorChoice.None)
                 {
                     // Increments blockedCells
                     occupiedCells++;

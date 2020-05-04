@@ -53,7 +53,6 @@ namespace Felli
 
         public void CapturePiece(Player player, Position position)
         {
-            //Piece[] newPieces = new Piece[player.playerPieces.Length - 1];
             List<Piece> capturedPieces = new List<Piece>(); 
             
             for (int i = 0; i < player.playerPieces.Length; i++)
@@ -76,25 +75,35 @@ namespace Felli
             {
                 ;
             }
+
+            if (piecePos.X != board.SizeX / 2 && piecePos.Y == board.SizeY / 2)
+            {
+                if (moveChoice == 1 || moveChoice == 3 || 
+                    moveChoice == 7 || moveChoice == 9)
+                {
+                    return "Your piece can't move that way";
+                }
+            }
+
             if (moveChoice == 0)
             {
                 return "Canceled Piece Movement";
             }
-            if (moveChoice == 1)
+            else if (moveChoice == 1)
             {
-                return piecePos.X < 5 && piecePos.Y > 0 ? 
+                return piecePos.X < 4 && piecePos.Y > 0 ? 
                     MovementCoordinates(opositePlayer, 1, -1) 
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 2)
             {
-                return piecePos.X < 5 ? 
+                return piecePos.X < 4 ? 
                     MovementCoordinates(opositePlayer, 1, 0) 
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 3)
             {
-                return piecePos.X < 5 && piecePos.Y < 5 ? 
+                return piecePos.X < 4 && piecePos.Y < 4 ? 
                     MovementCoordinates(opositePlayer, 1, 1) 
                     : "Your piece can't move that way.";
             }
@@ -106,7 +115,7 @@ namespace Felli
             }
             else if (moveChoice == 6)
             {
-                return piecePos.Y < 5 ? 
+                return piecePos.Y < 4 ? 
                     MovementCoordinates(opositePlayer, 0, 1) 
                     : "Your piece can't move that way.";
             }
@@ -124,7 +133,7 @@ namespace Felli
             }
             else if (moveChoice == 9)
             {
-                return piecePos.X > 0 && piecePos.Y < 5 ? 
+                return piecePos.X > 0 && piecePos.Y < 4 ? 
                     MovementCoordinates(opositePlayer, -1, 1) 
                     : "Your piece can't move that way.";
             }
