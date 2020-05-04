@@ -67,13 +67,13 @@ namespace Felli
 
             if ((ColorChoice)orderChoice[0] == ColorChoice.White)
             {
-                player1 = new Player(ColorChoice.White, whitePieces.ToArray());
-                player2 = new Player(ColorChoice.Black, blackPieces.ToArray());
+                player1 = new Player(ColorChoice.White, whitePieces.ToArray(), player2);
+                player2 = new Player(ColorChoice.Black, blackPieces.ToArray(), player1);
             }
             else
             {
-                player1 = new Player(ColorChoice.Black, blackPieces.ToArray());
-                player2 = new Player(ColorChoice.White, whitePieces.ToArray());
+                player1 = new Player(ColorChoice.Black, blackPieces.ToArray(), player2);
+                player2 = new Player(ColorChoice.White, whitePieces.ToArray(), player1);
             }
         }
     }

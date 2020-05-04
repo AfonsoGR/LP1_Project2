@@ -7,9 +7,11 @@ namespace Felli
     {
         public Piece[] playerPieces;
         public ColorChoice colorChoice;
+        public Player opositePlayer;
 
-        public Player(ColorChoice color, Piece[] pieces)
+        public Player(ColorChoice color, Piece[] pieces, Player other)
         {
+            opositePlayer = other;
             playerPieces = pieces;
             colorChoice = color;
         }
@@ -20,7 +22,7 @@ namespace Felli
             {
                 if (pieceChoice == playerPieces[i].id)
                 {
-                    return playerPieces[i].PieceMovement();
+                    return playerPieces[i].PieceMovement(opositePlayer);
                 }
             }
             return null;

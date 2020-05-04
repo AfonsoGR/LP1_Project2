@@ -46,7 +46,7 @@ namespace Felli
                 return "Your piece can't move that way.";
             }
         }
-        public string PieceMovement()
+        public string PieceMovement(Player opositePlayer)
         {
             int moveChoice;
 
