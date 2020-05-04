@@ -1,4 +1,6 @@
-﻿namespace Felli
+﻿using System;
+
+namespace Felli
 {
     public class Board
     {

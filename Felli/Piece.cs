@@ -31,11 +31,19 @@ namespace Felli
         {
             bool canMove = false;
 
-            if ((piecePos.X + (x + x) >= 0 && piecePos.Y + (y + y) >= 0 && 
-                piecePos.X + (x + x) < board.SizeX && 
-                piecePos.Y + (y + y) < board.SizeY))
+            int nextX = x + x;
+            int nextY = y + y;
+
+            if (piecePos.X == board.SizeX - 1 || piecePos.X == 0)
             {
-                canMove = (board[piecePos.X + (x + x), piecePos.Y + (y + y)]
+                nextY = y * 2 + y * 2;
+            }
+
+            if ((piecePos.X + nextX >= 0 && piecePos.Y + nextY >= 0 &&
+                piecePos.X + nextX < board.SizeX &&
+                piecePos.Y + nextY < board.SizeY))
+            {
+                canMove = (board[piecePos.X + nextX, piecePos.Y + nextY]
                 == ColorChoice.None);
             }
 
@@ -46,9 +54,10 @@ namespace Felli
                 if (player != null)
                 {
                     Position position =
-                        new Position(piecePos.X + x, piecePos.Y + y);
+                        new Position(piecePos.X + nextX / 2, piecePos.Y + nextY / 2);
                     CapturePiece(player, position);
-                    piecePos += (x + x, y + y);
+
+                    piecePos += (nextX, nextY);
                 }
                 return null;
             }

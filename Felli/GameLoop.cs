@@ -4,7 +4,6 @@ namespace Felli
 {
     internal class GameLoop
     {
-        private readonly bool running;
         private readonly string choiceMessage;
         private readonly GameInstance game;
 
@@ -19,7 +18,6 @@ namespace Felli
                     "|1 -> Bot Left |\t\t|2 ->  Bottom   |\t" +
                     "\t|3 -> Bottom Right |\n\n" +
                     ">> Press 0 to choose another piece <<";
-            running = true;
             game = new GameInstance(5, 5);
         }
 
@@ -46,23 +44,21 @@ namespace Felli
         private void Update()
         {
             WinConditions win = new WinConditions();
-            while (running)
+            while (true)
             {
                 GetChoice(game.player1);
 
-                win.WinCheck(game.player2);
+                if (win.WinCheck(game.player2) != ColorChoice.None)
+                {
+                    break;
+                }
 
                 GetChoice(game.player2);
 
-                win.WinCheck(game.player1);
-
-                //render.Render("Press x if you want to quit now");
-
-                //char.TryParse(Console.ReadLine(), out char charr);
-                //if (charr == 'x')
-                //{
-                //    running = !running;
-                //}
+                if (win.WinCheck(game.player1) != ColorChoice.None)
+                {
+                    break;
+                }
             }
         }
 
