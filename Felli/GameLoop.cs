@@ -45,10 +45,16 @@ namespace Felli
 
         private void Update()
         {
+            WinConditions win = new WinConditions();
             while (running)
             {
                 GetChoice(game.player1);
+
+                win.WinCheck(game.player2);
+
                 GetChoice(game.player2);
+
+                win.WinCheck(game.player1);
 
                 //render.Render("Press x if you want to quit now");
 

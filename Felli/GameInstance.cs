@@ -23,8 +23,7 @@ namespace Felli
             Board.SetBoardToInitState();
             CreatePieces();
 
-            Graphics = new Renderer(Board,
-                (player1, player2));
+            Graphics = new Renderer(Board, (player1, player2));
         }
 
         private void CreatePieces()

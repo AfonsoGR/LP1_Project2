@@ -1,3 +1,5 @@
+using System;
+
 namespace Felli
 {
     /// <summary>
@@ -21,7 +23,14 @@ namespace Felli
             {
                 if (pieceChoice == playerPieces[i].id)
                 {
-                    return playerPieces[i].PieceMovement(opositePlayer);
+                    int moveChoice;
+
+                    while (!int.TryParse(Console.ReadLine(), out moveChoice) ||
+                         moveChoice < 0 || moveChoice > 9 || moveChoice == 5)
+                    {
+                        ;
+                    }
+                    return playerPieces[i].PieceMovement(opositePlayer, moveChoice);
                 }
             }
             return "That piece no longer exists";

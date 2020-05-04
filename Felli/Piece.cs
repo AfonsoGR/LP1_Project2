@@ -29,20 +29,35 @@ namespace Felli
 
         private string MovementCoordinates(Player player, int x, int y)
         {
-            if ((board[piecePos.X + x, piecePos.Y + y] != visuals &&
-                board[piecePos.X + x, piecePos.Y + y] != ColorChoice.None) &&
-                (board[piecePos.X + (x + x), piecePos.Y + (y + y)]
-                == ColorChoice.None))
+            bool canMove = false;
+
+            if ((piecePos.X + (x + x) >= 0 && piecePos.Y + (y + y) >= 0 && 
+                piecePos.X + (x + x) < board.SizeX && 
+                piecePos.Y + (y + y) < board.SizeY))
             {
-                Position position =
-                    new Position(piecePos.X + x, piecePos.Y + y);
-                CapturePiece(player, position);
-                piecePos += ((x + x), (y + y));
+                canMove = (board[piecePos.X + (x + x), piecePos.Y + (y + y)]
+                == ColorChoice.None);
+            }
+
+            if (board[piecePos.X + x, piecePos.Y + y] != visuals &&
+                board[piecePos.X + x, piecePos.Y + y] != ColorChoice.None &&
+                canMove)
+            {
+                if (player != null)
+                {
+                    Position position =
+                        new Position(piecePos.X + x, piecePos.Y + y);
+                    CapturePiece(player, position);
+                    piecePos += (x + x, y + y);
+                }
                 return null;
             }
             else if (board[piecePos.X + x, piecePos.Y + y] == ColorChoice.None)
             {
-                piecePos += (x, y);
+                if (player != null)
+                {
+                    piecePos += (x, y);
+                }
                 return null;
             }
             else
@@ -66,16 +81,8 @@ namespace Felli
             player.playerPieces = capturedPieces.ToArray();
         }
 
-        public string PieceMovement(Player opositePlayer)
+        public string PieceMovement(Player opositePlayer, int moveChoice)
         {
-            int moveChoice;
-
-            while (!int.TryParse(Console.ReadLine(), out moveChoice) ||
-                 moveChoice < 0 || moveChoice > 9 || moveChoice == 5)
-            {
-                ;
-            }
-
             if (piecePos.X != board.SizeX / 2 && piecePos.Y == board.SizeY / 2)
             {
                 if (moveChoice == 1 || moveChoice == 3 ||
