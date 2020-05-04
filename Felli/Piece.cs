@@ -30,8 +30,9 @@ namespace Felli
         {
             if ((board[piecePos.X + x, piecePos.Y + y] != visuals &&
                 board[piecePos.X + x, piecePos.Y + y] != ColorChoice.None) &&
-                (board[piecePos.X + (x + x), piecePos.Y + (y + y)] == ColorChoice.None))
-            {
+                (board[piecePos.X + (x + x), piecePos.Y + (y + y)] 
+                == ColorChoice.None))
+            { 
                 piecePos += ((x + x), (y + y));
                 return null;
             }

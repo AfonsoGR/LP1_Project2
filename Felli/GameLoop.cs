@@ -21,7 +21,8 @@ namespace Felli
                     "|4 ->   Left   |\t\t|  YOUR PIECE   |\t" +
                     "\t|6 ->    Right     |\n" +
                     "|1 -> Bot Left |\t\t|2 ->  Bottom   |\t" +
-                    "\t|3 -> Bottom Right |\n (press 0 to choose another piece";
+                    "\t|3 -> Bottom Right |\n\n" +
+                    ">> Press 0 to choose another piece <<";
             running = true;
         }
 
