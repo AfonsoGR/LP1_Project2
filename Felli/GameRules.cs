@@ -11,10 +11,10 @@ namespace Felli
         /// Displays text on how to play the game and 
         /// awaits for user input before proceeding
         /// </summary>
-        public void GR()
+        public void GR(Renderer rend)
         {
             // Displays text on screen with information regarding the game
-            Console.WriteLine("Welcome to Felli!\nA 2 (two) player turn based "
+            rend.Render("Welcome to Felli!\nA 2 (two) player turn based "
                 + "PVP game.\n"
                 + "In this game the players will try to defeat eachother "
                 + "by either capturing eachother's pieces or by making them "

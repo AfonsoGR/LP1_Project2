@@ -5,12 +5,8 @@ namespace Felli
     internal class GameLoop
     {
         private readonly bool running;
-        private Renderer render;
-        private (Piece[] white, Piece[] black) piece;
         private readonly string choiceMessage;
-        private Board board;
-        private Player player1;
-        private Player player2;
+        private readonly GameInstance game;
 
         public GameLoop()
         {
@@ -23,33 +19,26 @@ namespace Felli
                     "|1 -> Bot Left |\t\t|2 ->  Bottom   |\t" +
                     "\t|3 -> Bottom Right |\n (press 0 to choose another piece";
             running = true;
+            game = new GameInstance(5, 5);
         }
 
         public void Start()
         {
-            GameSetup gameSetup = new GameSetup();
+            game.Graphics.Render("Do you wish to read the rules?" +
+                "\n Press Y to do so or anyother key to skip");
 
-            board = gameSetup.CreateBoard(5, 5);
-            piece = gameSetup.CreatePieces(board);
-            render = new Renderer(board, piece);
+            if (Console.ReadLine().ToUpper() == "Y")
+            {
+                // Creates a new GameRules
+                GameRules rules = new GameRules();
+                rules.GR(game.Graphics);
+            }
 
-            render.Render("Who goes/plays first?"
+            game.Graphics.Render("Who goes/plays first?"
                 + "\n\t>> The Black pieces <<"
                 + "\n\t>> The White pieces <<");
 
-            ColorChoice firstToPlay = gameSetup.OrderSelection();
-
-            if (firstToPlay == ColorChoice.White)
-            {
-                player1 = new Player(ColorChoice.White, piece.white);
-                player2 = new Player(ColorChoice.Black, piece.black);
-            }
-            else
-            {
-                player1 = new Player(ColorChoice.Black, piece.black);
-                player2 = new Player(ColorChoice.White, piece.white);
-            }
-
+            game.OrderSelection();
             Update();
         }
 
@@ -57,8 +46,8 @@ namespace Felli
         {
             while (running)
             {
-                GetChoice(player1);
-                GetChoice(player2);
+                GetChoice(game.player1);
+                GetChoice(game.player2);
 
                 //render.Render("Press x if you want to quit now");
 
@@ -76,7 +65,7 @@ namespace Felli
 
             while (message != null)
             {
-                render.Render($"{player.colorChoice}s turn \n " +
+                game.Graphics.Render($"{player.colorChoice}s turn \n " +
                     $"Choose the piece you want to move 1 - " +
                     $"{player.playerPieces.Length}", player.colorChoice);
 
@@ -85,14 +74,14 @@ namespace Felli
                     || pieceChoice < 1 || pieceChoice >
                     player.playerPieces.Length)
                 {
-                    render.Render($"{player.colorChoice}s turn \n " +
+                    game.Graphics.Render($"{player.colorChoice}s turn \n " +
                         $"Choose the piece you want to move 1 - " +
                         $"{player.playerPieces.Length}", player.colorChoice);
                 }
 
-                render.Render(choiceMessage);
+                game.Graphics.Render(choiceMessage);
                 message = player.MovePiece(pieceChoice);
-                render.Render(message);
+                game.Graphics.Render(message);
 
                 if (message != null)
                 {

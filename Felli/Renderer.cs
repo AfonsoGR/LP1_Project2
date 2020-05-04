@@ -2,7 +2,7 @@
 
 namespace Felli
 {
-    internal class Renderer
+    public class Renderer
     {
         private readonly Board board;
         private readonly string[] connectors;
@@ -132,9 +132,7 @@ namespace Felli
                 {
                     if (board[x, y] != default)
                     {
-                        Console.Write(connectors[ç]); ç++;
-
-                        Console.Write("  ");
+                        Console.Write($"{connectors[ç]}  "); ç++;
                     }
                     else
                     {
@@ -145,9 +143,7 @@ namespace Felli
                 {
                     if (board[x + 1, y] != default)
                     {
-                        Console.Write(connectors[ç]); ç++;
-
-                        Console.Write("  ");
+                        Console.Write($"{connectors[ç]}  "); ç++;
                     }
                     else
                     {

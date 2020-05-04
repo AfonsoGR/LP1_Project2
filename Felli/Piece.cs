@@ -60,37 +60,14 @@ namespace Felli
             }
             if (moveChoice == 1)
             {
-                if (piecePos.X < 5 && piecePos.Y > 0)
-                {
-                    return DoSomething(1, -1);
-                }
-                else
-                {
-                    return "Your piece can't move that way.";
-                }
+                return piecePos.X < 5 && piecePos.Y > 0 ? DoSomething(1, -1) 
+                    : "Your piece can't move that way.";
             }
             else if (moveChoice == 2)
             {
                 if (piecePos.X < 5)
                 {
                     return DoSomething(1, 0);
-
-                    if ((board[piecePos.X + 1, piecePos.Y] != visuals &&
-                        board[piecePos.X + 1, piecePos.Y] != ColorChoice.None)
-                        && (board[piecePos.X + 2, piecePos.Y] == ColorChoice.None))
-                    {
-                        piecePos += (2, 0);
-                        return null;
-                    }
-                    else if (board[piecePos.X + 1, piecePos.Y] == ColorChoice.None)
-                    {
-                        piecePos += (1, 0);
-                        return null;
-                    }
-                    else
-                    {
-                        return "Your piece can't move that way.";
-                    }
                 }
                 else
                 {
