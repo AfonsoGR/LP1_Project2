@@ -66,16 +66,15 @@ namespace Felli
 
             while (message != null)
             {
-                game.Graphics.Render($"{player.colorChoice}s turn \n " +
-                    $"Choose the piece you want to move", player.colorChoice);
+                game.Graphics.Render($"{player.ColorChoice}s turn \n " +
+                    $"Choose the piece you want to move", player.ColorChoice);
 
                 int pieceChoice;
                 while (!int.TryParse(Console.ReadLine(), out pieceChoice)
-                    || pieceChoice < 1 || pieceChoice >
-                    player.playerPieces.Length)
+                    || pieceChoice < 1 || pieceChoice > 6)
                 {
-                    game.Graphics.Render($"{player.colorChoice}s turn \n " +
-                        $"Choose the piece you want to move", player.colorChoice);
+                    game.Graphics.Render($"{player.ColorChoice}s turn \n " +
+                        $"Choose the piece you want to move", player.ColorChoice);
                 }
 
                 game.Graphics.Render(choiceMessage);

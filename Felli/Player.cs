@@ -6,13 +6,13 @@ namespace Felli
     public class Player
     {
         public Piece[] playerPieces;
-        public ColorChoice colorChoice;
+        public ColorChoice ColorChoice { get; }
         public Player opositePlayer;
 
         public Player(ColorChoice color, Piece[] pieces)
         {
             playerPieces = pieces;
-            colorChoice = color;
+            ColorChoice = color;
         }
 
         public string MovePiece(int pieceChoice)
