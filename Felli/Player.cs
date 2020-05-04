@@ -9,9 +9,8 @@ namespace Felli
         public ColorChoice colorChoice;
         public Player opositePlayer;
 
-        public Player(ColorChoice color, Piece[] pieces, Player other)
+        public Player(ColorChoice color, Piece[] pieces)
         {
-            opositePlayer = other;
             playerPieces = pieces;
             colorChoice = color;
         }

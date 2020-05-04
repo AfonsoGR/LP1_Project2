@@ -46,7 +46,7 @@ namespace Felli
                             (ColorChoice.Black, Board, x, y, id));
                         id++;
                     }
-                    else if (Board[x, y] == ColorChoice.None && x > Board.SizeX / 2)
+                    if (Board[x, y] == ColorChoice.None && x > Board.SizeX / 2)
                     {
                         whitePieces.Add(new Piece
                             (ColorChoice.White, Board, x, y, id));
@@ -67,21 +67,23 @@ namespace Felli
 
             if ((ColorChoice)orderChoice[0] == ColorChoice.White)
             {
-                player1 = new Player(ColorChoice.White, whitePieces.ToArray(), player2);
-                player2 = new Player(ColorChoice.Black, blackPieces.ToArray(), player1);
+                player1 = new Player(ColorChoice.White, whitePieces.ToArray());
+                player2 = new Player(ColorChoice.Black, blackPieces.ToArray());
 
                 Graphics = new Renderer(Board,
                     (player1, player2));
             }
             else
             {
-                player1 = new Player(ColorChoice.Black, blackPieces.ToArray(), player2);
-                player2 = new Player(ColorChoice.White, whitePieces.ToArray(), player1);
+                player1 = new Player(ColorChoice.Black, blackPieces.ToArray());
+                player2 = new Player(ColorChoice.White, whitePieces.ToArray());
 
                 Graphics = new Renderer(Board,
                     (player2, player1));
             }
 
+            player1.opositePlayer = player2;
+            player2.opositePlayer = player1;
         }
     }
 }
