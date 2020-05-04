@@ -2,7 +2,7 @@
 
 namespace Felli
 {
-    internal class Program
+    class Program
     {
         private static void Main(string[] args)
         {
@@ -15,7 +15,7 @@ namespace Felli
 
                 Console.Clear();
                 Console.WriteLine("Do you wish to play again?\nPress Y if " +
-                    "you do any other key to leave");
+                    "you do, press any other key to leave");
 
                 if (Console.ReadLine().ToUpper() != "Y")
                 {

@@ -2,7 +2,7 @@
 
 namespace Felli
 {
-    internal class GameLoop
+    public class GameLoop
     {
         private readonly string choiceMessage;
         private readonly GameInstance game;
@@ -24,7 +24,7 @@ namespace Felli
         public void Start()
         {
             game.Graphics.Render("Do you wish to read the rules?" +
-                "\n Press Y to do so or anyother key to skip");
+                "\n Press Y to do so or any other key to skip");
 
             if (Console.ReadLine().ToUpper() == "Y")
             {
@@ -50,6 +50,8 @@ namespace Felli
 
                 if (win.WinCheck(game.player2) != ColorChoice.None)
                 {
+                    game.Graphics.Render($"The {game.player2.ColorChoice}" + 
+                        "Pieces Win!");
                     break;
                 }
 
@@ -57,6 +59,8 @@ namespace Felli
 
                 if (win.WinCheck(game.player1) != ColorChoice.None)
                 {
+                    game.Graphics.Render($"The {game.player1.ColorChoice}" + 
+                        "Pieces Win!");
                     break;
                 }
             }
@@ -64,7 +68,7 @@ namespace Felli
 
         private void GetChoice(Player player)
         {
-            string message = "inv";
+            string message = " ";
 
             while (message != null)
             {
