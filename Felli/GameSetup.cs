@@ -49,14 +49,14 @@ namespace Felli
 
         public ColorChoice OrderSelection()
         {
-            char orderChoice = ' ';
+            string orderChoice = null;
 
-            while (!(orderChoice == 'W') && !(orderChoice == 'B'))
+            while (!(orderChoice == "W") && !(orderChoice == "B"))
             {
-                orderChoice = Console.ReadLine().ToUpper()[0];
+                orderChoice = Console.ReadLine().ToUpper();
             }
 
-            return (ColorChoice)orderChoice;
+            return (ColorChoice)orderChoice[0];
         }
     }
 }

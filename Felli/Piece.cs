@@ -26,34 +26,43 @@ namespace Felli
             board[piecePos.X, piecePos.Y] = visuals;
         }
 
+        private string DoSomething(int x, int y)
+        {
+            if ((board[piecePos.X + x, piecePos.Y + y] != visuals &&
+                board[piecePos.X + x, piecePos.Y + y] != ColorChoice.None) &&
+                (board[piecePos.X + (x + x), piecePos.Y + (y + y)] == ColorChoice.None))
+            {
+                piecePos += ((x + x), (y + y));
+                return null;
+            }
+            else if (board[piecePos.X + x, piecePos.Y + y] == ColorChoice.None)
+            {
+                piecePos += (x, y);
+                return null;
+            }
+            else
+            {
+                return "Your piece can't move that way.";
+            }
+        }
         public string PieceMovement()
         {
             int moveChoice;
 
             while (!int.TryParse(Console.ReadLine(), out moveChoice) ||
-                 moveChoice < 1 || moveChoice > 9 || moveChoice == 5)
+                 moveChoice < 0 || moveChoice > 9 || moveChoice == 5)
             {
                 ;
             }
-
+            if (moveChoice == 0)
+            {
+                return "Canceled Piece Movement";
+            }
             if (moveChoice == 1)
             {
                 if (piecePos.X < 5 && piecePos.Y > 0)
                 {
-                    if ((board[piecePos.X + 1, piecePos.Y - 1] != visuals && 
-                    board[piecePos.X + 1, piecePos.Y -1] != ColorChoice.None) &&
-                    (board[piecePos.X + 2, piecePos.Y - 2] == ColorChoice.None))
-                    {
-                        piecePos += (2, -2);
-                        return null;
-                    }
-                    else if (board[piecePos.X + 1, piecePos.Y - 1] == ColorChoice.None)
-                    {
-                        piecePos += (1, -1); 
-                        return null;
-                    }
-                    else
-                        return "Your piece can't move that way.";
+                    return DoSomething(1, -1);
                 }
                 else
                 {
@@ -64,20 +73,24 @@ namespace Felli
             {
                 if (piecePos.X < 5)
                 {
-                    if((board[piecePos.X + 1, piecePos.Y] != visuals && 
-                        board[piecePos.X + 1, piecePos.Y] != ColorChoice.None) 
+                    return DoSomething(1, 0);
+
+                    if ((board[piecePos.X + 1, piecePos.Y] != visuals &&
+                        board[piecePos.X + 1, piecePos.Y] != ColorChoice.None)
                         && (board[piecePos.X + 2, piecePos.Y] == ColorChoice.None))
                     {
                         piecePos += (2, 0);
                         return null;
                     }
-                    else if(board[piecePos.X + 1, piecePos.Y] == ColorChoice.None)
+                    else if (board[piecePos.X + 1, piecePos.Y] == ColorChoice.None)
                     {
                         piecePos += (1, 0);
                         return null;
                     }
                     else
-                        return "Your piece can't move that way.";                   
+                    {
+                        return "Your piece can't move that way.";
+                    }
                 }
                 else
                 {
@@ -88,20 +101,22 @@ namespace Felli
             {
                 if (piecePos.X < 5 && piecePos.Y < 5)
                 {
-                    if((board[piecePos.X + 1, piecePos.Y + 1] != visuals) &&
+                    if ((board[piecePos.X + 1, piecePos.Y + 1] != visuals) &&
                         (board[piecePos.X + 1, piecePos.Y + 1] != ColorChoice.None)
                         && (board[piecePos.X + 2, piecePos.Y + 2] == ColorChoice.None))
                     {
                         piecePos += (2, 2);
                         return null;
                     }
-                    else if(board[piecePos.X + 1, piecePos.Y + 1] == ColorChoice.None)
+                    else if (board[piecePos.X + 1, piecePos.Y + 1] == ColorChoice.None)
                     {
                         piecePos += (1, 1);
                         return null;
                     }
                     else
+                    {
                         return "Your piece can't move that way.";
+                    }
                 }
                 else
                 {
@@ -112,20 +127,22 @@ namespace Felli
             {
                 if (piecePos.Y > 0)
                 {
-                    if((board[piecePos.X, piecePos.Y - 1] != visuals) &&
+                    if ((board[piecePos.X, piecePos.Y - 1] != visuals) &&
                         (board[piecePos.X, piecePos.Y - 1] != ColorChoice.None)
                         && (board[piecePos.X, piecePos.Y - 2] == ColorChoice.None))
                     {
                         piecePos += (0, -2);
                         return null;
                     }
-                    else if(board[piecePos.X, piecePos.Y - 1] == ColorChoice.None)
+                    else if (board[piecePos.X, piecePos.Y - 1] == ColorChoice.None)
                     {
                         piecePos += (0, -1);
                         return null;
                     }
                     else
-                        return "Your piece can't move that way."; 
+                    {
+                        return "Your piece can't move that way.";
+                    }
                 }
                 else
                 {
@@ -136,20 +153,22 @@ namespace Felli
             {
                 if (piecePos.Y < 5)
                 {
-                    if((board[piecePos.X, piecePos.Y + 1] != visuals) &&
+                    if ((board[piecePos.X, piecePos.Y + 1] != visuals) &&
                         (board[piecePos.X, piecePos.Y + 1] != ColorChoice.None)
                         && (board[piecePos.X, piecePos.Y + 2] == ColorChoice.None))
                     {
-                        piecePos += (0, 2); 
+                        piecePos += (0, 2);
                         return null;
                     }
-                    else if(board[piecePos.X, piecePos.Y + 1] == ColorChoice.None)
+                    else if (board[piecePos.X, piecePos.Y + 1] == ColorChoice.None)
                     {
-                        piecePos += (0, 1); 
+                        piecePos += (0, 1);
                         return null;
                     }
                     else
+                    {
                         return "Your piece can't move that way.";
+                    }
                 }
                 else
                 {
@@ -160,21 +179,22 @@ namespace Felli
             {
                 if (piecePos.X > 0 && piecePos.Y < 5)
                 {
-                    if((board[piecePos.X - 1, piecePos.Y - 1] != visuals) &&
+                    if ((board[piecePos.X - 1, piecePos.Y - 1] != visuals) &&
                         (board[piecePos.X - 1, piecePos.Y - 1] != ColorChoice.None)
                         && (board[piecePos.X - 2, piecePos.Y - 2] == ColorChoice.None))
                     {
                         piecePos += (-2, -2);
                         return null;
                     }
-                    else if(board[piecePos.X - 1, piecePos.Y - 1] == ColorChoice.None)
+                    else if (board[piecePos.X - 1, piecePos.Y - 1] == ColorChoice.None)
                     {
                         piecePos += (-1, -1);
                         return null;
                     }
                     else
+                    {
                         return "Your piece can't move that way.";
-                    
+                    }
                 }
                 else
                 {
@@ -192,13 +212,15 @@ namespace Felli
                         piecePos += (-2, 0);
                         return null;
                     }
-                    else if(board[piecePos.X - 1, piecePos.Y] == ColorChoice.None)
+                    else if (board[piecePos.X - 1, piecePos.Y] == ColorChoice.None)
                     {
                         piecePos += (-1, 0);
                         return null;
                     }
                     else
+                    {
                         return "Your piece can't move that way.";
+                    }
                 }
                 else
                 {
@@ -209,20 +231,22 @@ namespace Felli
             {
                 if (piecePos.X > 0 && piecePos.Y < 5)
                 {
-                    if((board[piecePos.X - 1, piecePos.Y + 1] != visuals) &&
+                    if ((board[piecePos.X - 1, piecePos.Y + 1] != visuals) &&
                         (board[piecePos.X - 1, piecePos.Y + 1] != ColorChoice.None)
                         && (board[piecePos.X - 2, piecePos.Y + 2] == ColorChoice.None))
                     {
                         piecePos += (-2, 2);
                         return null;
                     }
-                    else if(board[piecePos.X - 1, piecePos.Y + 1] == ColorChoice.None)
+                    else if (board[piecePos.X - 1, piecePos.Y + 1] == ColorChoice.None)
                     {
                         piecePos += (-1, 1);
                         return null;
                     }
                     else
+                    {
                         return "Your piece can't move that way.";
+                    }
                 }
                 else
                 {

@@ -4,13 +4,14 @@ namespace Felli
 {
     internal class GameLoop
     {
-        private bool running;
+        private readonly bool running;
         private Renderer render;
         private (Piece[] white, Piece[] black) piece;
         private readonly string choiceMessage;
         private Board board;
         private Player player1;
         private Player player2;
+
         public GameLoop()
         {
             choiceMessage = "Which way do you wish to move the piece?\n" +
@@ -20,7 +21,7 @@ namespace Felli
                     "|4 ->   Left   |\t\t|  YOUR PIECE   |\t" +
                     "\t|6 ->    Right     |\n" +
                     "|1 -> Bot Left |\t\t|2 ->  Bottom   |\t" +
-                    "\t|3 -> Bottom Right |\n";
+                    "\t|3 -> Bottom Right |\n (press 0 to choose another piece";
             running = true;
         }
 
@@ -57,15 +58,15 @@ namespace Felli
             while (running)
             {
                 GetChoice(player1);
-                //GetChoice(player2);
+                GetChoice(player2);
 
-                render.Render("Press x if you want to quit now");
+                //render.Render("Press x if you want to quit now");
 
-                char.TryParse(Console.ReadLine(), out char charr);
-                if (charr == 'x')
-                {
-                    running = !running;
-                }
+                //char.TryParse(Console.ReadLine(), out char charr);
+                //if (charr == 'x')
+                //{
+                //    running = !running;
+                //}
             }
         }
 
@@ -75,15 +76,18 @@ namespace Felli
 
             while (message != null)
             {
-                render.Render($"Choose the piece you want to move 1 - " +
+                render.Render($"{player.colorChoice}s turn \n " +
+                    $"Choose the piece you want to move 1 - " +
                     $"{player.playerPieces.Length}", player.colorChoice);
 
                 int pieceChoice;
-                while (!int.TryParse(Console.ReadLine(), out pieceChoice) 
-                    || pieceChoice < 1 || pieceChoice > 
+                while (!int.TryParse(Console.ReadLine(), out pieceChoice)
+                    || pieceChoice < 1 || pieceChoice >
                     player.playerPieces.Length)
                 {
-                    ;
+                    render.Render($"{player.colorChoice}s turn \n " +
+                        $"Choose the piece you want to move 1 - " +
+                        $"{player.playerPieces.Length}", player.colorChoice);
                 }
 
                 render.Render(choiceMessage);

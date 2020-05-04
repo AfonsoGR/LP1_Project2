@@ -1,5 +1,3 @@
-using System;
-
 namespace Felli
 {
     /// <summary>
