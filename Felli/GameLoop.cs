@@ -74,7 +74,8 @@ namespace Felli
                     || pieceChoice < 1 || pieceChoice > 6)
                 {
                     game.Graphics.Render($"{player.ColorChoice}s turn \n " +
-                        $"Choose the piece you want to move", player.ColorChoice);
+                        $"Choose the piece you want to move",
+                        player.ColorChoice);
                 }
 
                 game.Graphics.Render(choiceMessage);

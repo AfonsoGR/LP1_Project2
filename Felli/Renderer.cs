@@ -98,11 +98,13 @@ namespace Felli
 
             if (piece.Item1 != null && piece.Item2 != null)
             {
-                for (int white = 0; white < piece.Item1.playerPieces.Length; white++)
+                for (int white = 0;
+                    white < piece.Item1.playerPieces.Length; white++)
                 {
                     piece.Item1.playerPieces[white].PieceOnBoard();
                 }
-                for (int black = 0; black < piece.Item2.playerPieces.Length; black++)
+                for (int black = 0;
+                    black < piece.Item2.playerPieces.Length; black++)
                 {
                     piece.Item2.playerPieces[black].PieceOnBoard();
                 }
