@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Felli
@@ -93,8 +92,8 @@ namespace Felli
         public string PieceMovement(Player opositePlayer, int moveChoice)
         {
             string invalidMove = Restrictions(moveChoice);
-            
-            if(invalidMove != null)
+
+            if (invalidMove != null)
             {
                 return invalidMove;
             }

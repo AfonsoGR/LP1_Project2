@@ -8,7 +8,7 @@ namespace Felli
     public class GameRules
     {
         /// <summary>
-        /// Displays text on how to play the game and 
+        /// Displays text on how to play the game and
         /// awaits for user input before proceeding
         /// </summary>
         public void GR(Renderer rend)
@@ -37,7 +37,7 @@ namespace Felli
                 + "granting victory to his opponent.\n\n"
                 + ">>>>>> Press any key when you are ready to start <<<<<<");
 
-            // Waits for the user's input before proceeding 
+            // Waits for the user's input before proceeding
             Console.ReadKey();
         }
     }

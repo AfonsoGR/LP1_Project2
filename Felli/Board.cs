@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Felli
+﻿namespace Felli
 {
     public class Board
     {
@@ -20,6 +18,7 @@ namespace Felli
         {
             boardPieces = new ColorChoice[xSize, ySize];
         }
+
         public void SetBoardToInitState()
         {
             int y = 0;

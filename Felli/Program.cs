@@ -17,7 +17,10 @@ namespace Felli
                 Console.WriteLine("Do you wish to play again?\nPress Y if " +
                     "you do any other key to leave");
 
-                if (Console.ReadLine().ToUpper() != "Y") break;
+                if (Console.ReadLine().ToUpper() != "Y")
+                {
+                    break;
+                }
             }
         }
     }

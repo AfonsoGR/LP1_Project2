@@ -79,6 +79,7 @@ namespace Felli
             }
             DrawMessageBox(message);
         }
+
         private void ShowNumberID(int k, int l, Piece[] piece)
         {
             Console.Write($"{(char)board[k, l]}");
@@ -92,6 +93,7 @@ namespace Felli
                 }
             }
         }
+
         private void SetBoardVisuals()
         {
             board.SetBoardToInitState();
@@ -157,6 +159,7 @@ namespace Felli
                 }
             }
         }
+
         private void DrawMessageBox(string message)
         {
             string flair = "--------------------.--------------------." +
