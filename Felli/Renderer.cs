@@ -6,9 +6,9 @@ namespace Felli
     {
         private readonly Board board;
         private readonly string[] connectors;
-        private (Piece[], Piece[]) piece;
+        private (Player, Player) piece;
 
-        public Renderer(Board board, (Piece[], Piece[]) piece)
+        public Renderer(Board board, (Player, Player) piece)
         {
             this.piece = piece;
             connectors = new string[6] { @"\", "|", "/", "/", "|", @"\" };
@@ -54,11 +54,11 @@ namespace Felli
                     {
                         if (color == ColorChoice.White)
                         {
-                            ShowNumberID(x, y, piece.Item1);
+                            ShowNumberID(x, y, piece.Item1.playerPieces);
                         }
                         else if (color == ColorChoice.Black)
                         {
-                            ShowNumberID(x, y, piece.Item2);
+                            ShowNumberID(x, y, piece.Item2.playerPieces);
                         }
                         else
                         {
@@ -96,13 +96,16 @@ namespace Felli
         {
             board.SetBoardToInitState();
 
-            for (int white = 0; white < piece.Item1.Length; white++)
+            if (piece.Item1 != null && piece.Item2 != null)
             {
-                piece.Item1[white].PieceOnBoard();
-            }
-            for (int black = 0; black < piece.Item2.Length; black++)
-            {
-                piece.Item2[black].PieceOnBoard();
+                for (int white = 0; white < piece.Item1.playerPieces.Length; white++)
+                {
+                    piece.Item1.playerPieces[white].PieceOnBoard();
+                }
+                for (int black = 0; black < piece.Item2.playerPieces.Length; black++)
+                {
+                    piece.Item2.playerPieces[black].PieceOnBoard();
+                }
             }
         }
 

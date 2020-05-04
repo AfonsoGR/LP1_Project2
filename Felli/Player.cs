@@ -25,7 +25,7 @@ namespace Felli
                     return playerPieces[i].PieceMovement(opositePlayer);
                 }
             }
-            return null;
+            return "That piece no longer exists";
         }
     }
 }

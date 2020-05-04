@@ -67,8 +67,7 @@ namespace Felli
             while (message != null)
             {
                 game.Graphics.Render($"{player.colorChoice}s turn \n " +
-                    $"Choose the piece you want to move 1 - " +
-                    $"{player.playerPieces.Length}", player.colorChoice);
+                    $"Choose the piece you want to move", player.colorChoice);
 
                 int pieceChoice;
                 while (!int.TryParse(Console.ReadLine(), out pieceChoice)
@@ -76,8 +75,7 @@ namespace Felli
                     player.playerPieces.Length)
                 {
                     game.Graphics.Render($"{player.colorChoice}s turn \n " +
-                        $"Choose the piece you want to move 1 - " +
-                        $"{player.playerPieces.Length}", player.colorChoice);
+                        $"Choose the piece you want to move", player.colorChoice);
                 }
 
                 game.Graphics.Render(choiceMessage);

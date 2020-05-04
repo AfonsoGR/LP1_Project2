@@ -12,7 +12,7 @@ namespace Felli
         public Player player1;
         public Player player2;
 
-        public Renderer Graphics { get; }
+        public Renderer Graphics { get; private set; }
 
         public GameInstance(int x, int y)
         {
@@ -23,8 +23,8 @@ namespace Felli
             Board.SetBoardToInitState();
             CreatePieces();
 
-            Graphics = new Renderer(Board, 
-                (whitePieces.ToArray(), blackPieces.ToArray()));
+            Graphics = new Renderer(Board,
+                (player1, player2));
         }
 
         private void CreatePieces()
@@ -69,12 +69,19 @@ namespace Felli
             {
                 player1 = new Player(ColorChoice.White, whitePieces.ToArray(), player2);
                 player2 = new Player(ColorChoice.Black, blackPieces.ToArray(), player1);
+
+                Graphics = new Renderer(Board,
+                    (player1, player2));
             }
             else
             {
                 player1 = new Player(ColorChoice.Black, blackPieces.ToArray(), player2);
                 player2 = new Player(ColorChoice.White, whitePieces.ToArray(), player1);
+
+                Graphics = new Renderer(Board,
+                    (player2, player1));
             }
+
         }
     }
 }
