@@ -49,7 +49,7 @@ namespace Felli
 
             // Set's the board to the initial state
             Board.SetBoardToInitState();
-            // Generetes the pieces of both players
+            // Generates the pieces of both players
             CreatePieces();
 
             // Creates a new Renderer providing the players and the board
@@ -124,8 +124,7 @@ namespace Felli
                 Player2 = new Player(ColorChoice.Black, blackPieces.ToArray());
 
                 // Creates a new render with the new players
-                Graphics = new Renderer(Board,
-                    (Player1, Player2));
+                Graphics = new Renderer(Board, (Player1, Player2));
             }
             else
             {
@@ -135,13 +134,8 @@ namespace Felli
                 Player2 = new Player(ColorChoice.White, whitePieces.ToArray());
 
                 // Creates a new render with the new players
-                Graphics = new Renderer(Board,
-                    (Player2, Player1));
+                Graphics = new Renderer(Board, (Player2, Player1));
             }
-
-            // Gives both players the oposite player
-            Player1.opositePlayer = Player2;
-            Player2.opositePlayer = Player1;
         }
     }
 }

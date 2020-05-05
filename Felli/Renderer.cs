@@ -17,7 +17,7 @@ namespace Felli
         private (Player p1, Player p2) players;
 
         /// <summary>
-        /// Creates a Rednerer to display the board
+        /// Creates a Renderer to display the board
         /// </summary>
         /// <param name="board"> The board created </param>
         /// <param name="players"> Both players </param>
@@ -228,7 +228,8 @@ namespace Felli
                         Console.Write("  ");
                     }
                 }
-                // If the next X is acessible and is at the bottom of the board
+                // If the next X value is accessible and is at the bottom half
+                // of the board
                 else if (x + 1 < board.SizeX && x >= board.SizeX / 2)
                 {
                     // If that position has value
@@ -252,7 +253,7 @@ namespace Felli
         /// <param name="message"> The message provided </param>
         private void DrawMessageBox(string message)
         {
-            // Cheks if the message has something
+            // Checks if the message has something
             if (message != null)
             {
                 // Splits the message by the '\n' char

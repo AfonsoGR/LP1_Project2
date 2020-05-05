@@ -13,11 +13,6 @@ namespace Felli
         public Piece[] playerPieces;
 
         /// <summary>
-        /// Stores the opponent
-        /// </summary>
-        public Player opositePlayer;
-
-        /// <summary>
         /// Stores the color of this player
         /// </summary>
         public ColorChoice ColorChoice { get; }
@@ -40,7 +35,7 @@ namespace Felli
         /// </summary>
         /// <param name="pieceChoice"> ID of the players wanted </param>
         /// <returns> A string message </returns>
-        public string MovePiece(int pieceChoice)
+        public string MovePiece(int pieceChoice, Player opositePlayer)
         {
             // Checks all of the player pieces
             for (int i = 0; i < playerPieces.Length; i++)

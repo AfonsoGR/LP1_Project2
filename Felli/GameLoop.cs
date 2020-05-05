@@ -84,7 +84,7 @@ namespace Felli
             while (true)
             {
                 // Asks the user to perform a move
-                DoPlayerMovement(game.Player1);
+                DoPlayerMovement(game.Player1, game.Player2);
 
                 // Checks if there's a winner
                 if (win.WinCheck(game.Player2) != ColorChoice.None)
@@ -100,7 +100,7 @@ namespace Felli
                     break;
                 }
                 // Asks the user to perform a move
-                DoPlayerMovement(game.Player2);
+                DoPlayerMovement(game.Player2, game.Player1);
 
                 // Checks if there's a winner
                 if (win.WinCheck(game.Player1) != ColorChoice.None)
@@ -118,7 +118,7 @@ namespace Felli
             }
         }
 
-        private void DoPlayerMovement(Player player)
+        private void DoPlayerMovement(Player player, Player other)
         {
             // Creates an empty string
             string message = " ";
@@ -147,7 +147,7 @@ namespace Felli
                 game.Graphics.Render(choiceMessage);
 
                 // Does the movement getting a response string in return
-                message = player.MovePiece(pieceChoice);
+                message = player.MovePiece(pieceChoice, other);
 
                 // Displays the board along with a message
                 game.Graphics.Render(message);
