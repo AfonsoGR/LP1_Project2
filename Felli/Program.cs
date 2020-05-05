@@ -30,7 +30,7 @@ namespace Felli
 
                 // Displays on text message for the players
                 Console.WriteLine("Do you wish to play again?\nPress Y if " +
-                    "you do, press any other key to leave");
+                                  "you do, press any other key to leave");
 
                 // Checks for user input is "Y"
                 if (Console.ReadLine().ToUpper() != "Y")
