@@ -7,7 +7,7 @@ namespace Felli
     /// </summary>
     public class GameLoop
     {
-        // Stores a string for the message for each piece decision
+        // Stores a string for the message for each players decision
         private readonly string choiceMessage;
         // Creates a GameInstace of the game
         private readonly GameInstance game;
@@ -22,7 +22,7 @@ namespace Felli
         public GameLoop()
         {
             // Assigns a message to the choiceMessage string
-            choiceMessage = "Which way do you wish to move the piece?\n" +
+            choiceMessage = "Which way do you wish to move the players?\n" +
                     "We advise using the NUMPAD due to the layout.\n\n" +
                     "|7 -> Top Left |\t\t|8 ->    Top    |\t" +
                     "\t|9 ->   TopRight   |\n" +
@@ -30,7 +30,7 @@ namespace Felli
                     "\t|6 ->    Right     |\n" +
                     "|1 -> Bot Left |\t\t|2 ->  Bottom   |\t" +
                     "\t|3 -> Bottom Right |\n\n" +
-                    ">> Press 0 to choose another piece <<";
+                    ">> Press 0 to choose another players <<";
 
             // Creates a new GameInstance passing the size of the board
             game = new GameInstance(5, 5);
@@ -58,9 +58,9 @@ namespace Felli
             }
 
             // Displays the board along with a message
-            game.Graphics.Render("Who goes/plays first?"
-                + "\n\t>> For the Black pieces press B <<"
-                + "\n\t>> For the White pieces press W <<");
+            game.Graphics.Render("\t\tWho goes/plays first?"
+                + "\n\t >> For the Black pieces press B <<"
+                + "\n\t >> For the White pieces press W <<");
 
             // Defines which color plays first
             game.OrderSelection();
@@ -121,7 +121,7 @@ namespace Felli
             string message = " ";
             // Creates a message displaying which turn it is
             string turnMessage = $"{player.ColorChoice}s turn " +
-                $"\nChoose the piece you want to move";
+                $"\nChoose the players you want to move";
 
             // Performs a loop while the message isn't null
             while (message != null)
@@ -129,7 +129,7 @@ namespace Felli
                 // Displays the board along with a message
                 game.Graphics.Render(turnMessage, player.ColorChoice);
 
-                // Creates an integer to store the wanted piece
+                // Creates an integer to store the wanted players
                 int pieceChoice;
 
                 // Asks for input until it's a valid one
@@ -143,7 +143,7 @@ namespace Felli
                 // Displays the board along with a message
                 game.Graphics.Render(choiceMessage);
 
-                // Does the movement of that piece returning a string if it can
+                // Does the movement of that players returning a string if it can
                 message = player.MovePiece(pieceChoice);
 
                 // Displays the board along with a message

@@ -73,10 +73,10 @@ namespace Felli
                 // Loops through the board height
                 for (int y = 0; y < Board.SizeY; y++)
                 {
-                    // Checks if there's no piece and it's at the top half
+                    // Checks if there's no players and it's at the top half
                     if (Board[x, y] == ColorChoice.None && x < Board.SizeX / 2)
                     {
-                        // Adds a new black piece on the X and Y
+                        // Adds a new black players on the X and Y
                         // providing the ID
                         blackPieces.Add(new Piece
                             (ColorChoice.Black, Board, x, y, id));
@@ -85,7 +85,7 @@ namespace Felli
                     }
                     if (Board[x, y] == ColorChoice.None && x > Board.SizeX / 2)
                     {
-                        // Adds a new white piece on the X and Y
+                        // Adds a new white players on the X and Y
                         // providing the ID
                         whitePieces.Add(new Piece
                             (ColorChoice.White, Board, x, y, id));
