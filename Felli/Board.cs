@@ -5,7 +5,7 @@
     /// </summary>
     public class Board
     {
-        // A bi-demensional array containing a ColorChoice
+        // A bi-dimensional array containing a ColorChoice
         private readonly ColorChoice[,] boardPieces;
 
         /// <summary>
