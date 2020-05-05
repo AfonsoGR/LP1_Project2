@@ -19,16 +19,17 @@ X
 
 ### Repositório
 
-<https://github.com/AfonsoGR/LP2_Project2>
+<https://github.com/AfonsoGR/LP1_Project2>
 
 ## Arquitetura da solução
 
 ### Descrição da solução
 
 X
-### Fluxograma
 
-![Fluxograma](Fluxograma.png)
+### Diagrama UML
+
+![diagramaUML](diagramaUML.png)
 
 ## Referências
 
