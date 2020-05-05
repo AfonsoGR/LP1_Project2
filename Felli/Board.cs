@@ -33,7 +33,7 @@
         /// Creates a new board with the given size
         /// </summary>
         /// <param name="xSize"> Height of the board </param>
-        /// <param name="ySize"> Lenght of the board </param>
+        /// <param name="ySize"> Length of the board </param>
         public Board(int xSize, int ySize)
         {
             // Creates a new array with the dimensions provided
