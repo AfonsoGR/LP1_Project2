@@ -17,14 +17,10 @@ namespace Felli
         /// </summary>
         public int ID { get; }
 
-        /// <summary>
-        /// Saves visuals aspect of the pieces
-        /// </summary>
-        private readonly ColorChoice visuals;
+        // Saves visuals aspect of the pieces
+        private ColorChoice visuals;
         
-        /// <summary>
-        /// Saves the board
-        /// </summary>
+        // Saves the board
         private readonly Board board;
 
         /// <summary>
@@ -34,14 +30,14 @@ namespace Felli
         /// <param name="board"> Current state of the board </param>
         /// <param name="row"> Piece's X position </param>
         /// <param name="column"> Piece's Y position </param>
-        /// <param name="iD"> This piece's corresponding ID </param>
+        /// <param name="iD"> This players's corresponding ID </param>
         public Piece(ColorChoice visuals, Board board, int row = 0,
             int column = 0, int iD = 0)
         {
             // Assigns value to 'ID'
             ID = iD;
 
-            // Creates new piece's position
+            // Creates new players's position
             PiecePos = new Position(row, column);
 
             // Assigns board to the one given
@@ -61,7 +57,7 @@ namespace Felli
         }
 
         /// <summary>
-        /// Manages the piece's ability to capture or move
+        /// Manages the players's ability to capture or move
         /// </summary>
         /// <param name="player"> Current state of the opposite player </param>
         /// <param name="x"> Movement value in the X axis </param>
@@ -78,7 +74,7 @@ namespace Felli
             // Defines int variable 'nextY' and assigns a value
             int nextY = y + y;
 
-            // Checks if the current piece is on 
+            // Checks if the current players is on 
             // the top or bottom line of the board
             if (PiecePos.X == board.SizeX - 1 || PiecePos.X == 0)
             {
@@ -92,12 +88,12 @@ namespace Felli
                 PiecePos.Y + nextY < board.SizeY))
             {
                 // Checks if there is an open space after the 
-                // piece that is going to be captured
+                // players that is going to be captured
                 canMove = (board[PiecePos.X + nextX, PiecePos.Y + nextY]
                 == ColorChoice.None);
             }
 
-            // Checks if the player can capture the piece in his way
+            // Checks if the player can capture the players in his way
             if (board[PiecePos.X + x, PiecePos.Y + y] != visuals &&
                 board[PiecePos.X + x, PiecePos.Y + y] != ColorChoice.None &&
                 canMove)
@@ -105,7 +101,7 @@ namespace Felli
                 // Checks if the player isn't null
                 if (player != null)
                 {
-                    // Creates a new Position where the captured piece is
+                    // Creates a new Position where the captured players is
                     Position position =
                         new Position(PiecePos.X + nextX / 2,
                         PiecePos.Y + nextY / 2);
@@ -113,7 +109,7 @@ namespace Felli
                     // Calls CapturePiece method 
                     CapturePiece(player, position);
 
-                    // Calculates new position for the piece 
+                    // Calculates new position for the players 
                     PiecePos += (nextX, nextY);
                 }
                 // Returns null
@@ -125,7 +121,7 @@ namespace Felli
                 // Checks if the player isn't null
                 if (player != null)
                 {
-                    // Calculates new position for the current piece
+                    // Calculates new position for the current players
                     PiecePos += (x, y);
                 }
                 // Returns null
@@ -135,15 +131,15 @@ namespace Felli
             else
             {
                 // Returns a message
-                return "Your piece can't move that way.";
+                return "Your players can't move that way.";
             }
         }
 
         /// <summary>
-        /// Manages piece capturing
+        /// Manages players capturing
         /// </summary>
         /// <param name="player"> Current state of the opposite player </param>
-        /// <param name="position"> Position of piece to be captured </param>
+        /// <param name="position"> Position of players to be captured </param>
         private void CapturePiece(Player player, Position position)
         {
             // Saves the pieces that haven't been captured 
@@ -152,11 +148,11 @@ namespace Felli
             // Checks all of the opposite player's pieces
             for (int i = 0; i < player.playerPieces.Length; i++)
             {
-                // Checks if a piece's position is different from 
+                // Checks if a players's position is different from 
                 // the given position
                 if (player.playerPieces[i].PiecePos != position)
                 {
-                    // Adds the piece to the list of newPlayerPieces
+                    // Adds the players to the list of newPlayerPieces
                     newPlayerPieces.Add(player.playerPieces[i]);
                 }
             }
@@ -166,7 +162,7 @@ namespace Felli
         }
 
         /// <summary>
-        /// Manages piece movement 
+        /// Manages players movement 
         /// </summary>
         /// <param name="opositePlayer"> State of the opposite player </param>
         /// <param name="moveChoice"> Given movement choice </param>
@@ -192,74 +188,74 @@ namespace Felli
             // Checks player's movement choice
             else if (moveChoice == 1)
             {
-                // Checks if the piece can move that way, 
+                // Checks if the players can move that way, 
                 // returns string if it can't
                 return PiecePos.X < 4 && PiecePos.Y > 0 ?
                     CaptureOrMove(opositePlayer, 1, -1)
-                    : "Your piece can't move that way.";
+                    : "Your players can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 2)
             {
-                // Checks if the piece can move that way, 
+                // Checks if the players can move that way, 
                 // returns string if it can't
                 return PiecePos.X < 4 ?
                     CaptureOrMove(opositePlayer, 1, 0)
-                    : "Your piece can't move that way.";
+                    : "Your players can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 3)
             {
-                // Checks if the piece can move that way, 
+                // Checks if the players can move that way, 
                 // returns string if it can't
                 return PiecePos.X < 4 && PiecePos.Y < 4 ?
                     CaptureOrMove(opositePlayer, 1, 1)
-                    : "Your piece can't move that way.";
+                    : "Your players can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 4)
             {
-                // Checks if the piece can move that way, 
+                // Checks if the players can move that way, 
                 // returns string if it can't
                 return PiecePos.Y > 0 ?
                     CaptureOrMove(opositePlayer, 0, -1)
-                    : "Your piece can't move that way.";
+                    : "Your players can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 6)
             {
-                // Checks if the piece can move that way, 
+                // Checks if the players can move that way, 
                 // returns string if it can't
                 return PiecePos.Y < 4 ?
                     CaptureOrMove(opositePlayer, 0, 1)
-                    : "Your piece can't move that way.";
+                    : "Your players can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 7)
             {
-                // Checks if the piece can move that way, 
+                // Checks if the players can move that way, 
                 // returns string if it can't
                 return PiecePos.X > 0 && PiecePos.Y > 0 ?
                     CaptureOrMove(opositePlayer, -1, -1)
-                    : "Your piece can't move that way.";
+                    : "Your players can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 8)
             {
-                // Checks if the piece can move that way, 
+                // Checks if the players can move that way, 
                 // returns string if it can't
                 return PiecePos.X > 0 ?
                     CaptureOrMove(opositePlayer, -1, 0)
-                    : "Your piece can't move that way.";
+                    : "Your players can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 9)
             {
-                // Checks if the piece can move that way, 
+                // Checks if the players can move that way, 
                 // returns string if it can't
                 return PiecePos.X > 0 && PiecePos.Y < 4 ?
                     CaptureOrMove(opositePlayer, -1, 1)
-                    : "Your piece can't move that way.";
+                    : "Your players can't move that way.";
             }
             // Previous conditions weren't met
             else
@@ -276,7 +272,7 @@ namespace Felli
         /// <returns> Returns a message </returns>
         private string Restrictions(int moveChoice)
         {
-            // Checks if a piece is in a specific X and Y coordinates
+            // Checks if a players is in a specific X and Y coordinates
             if (PiecePos.X != board.SizeX / 2 && PiecePos.Y == board.SizeY / 2)
             {
                 // Checks the player's movement choice
@@ -284,51 +280,51 @@ namespace Felli
                     moveChoice == 7 || moveChoice == 9)
                 {
                     // Returns a message
-                    return "Your piece can't move that way";
+                    return "Your players can't move that way";
                 }
             }
 
-            // Checks if a piece is in a specific X and Y coordinates
+            // Checks if a players is in a specific X and Y coordinates
             if (PiecePos.X == 1 && PiecePos.Y == 1)
             {
                 // Checks the player's movement choice
                 if (moveChoice == 9)
                 {
                     // Returns a message
-                    return "Your piece can't move that way";
+                    return "Your players can't move that way";
                 }
             }
 
-            // Checks if a piece is in a specific X and Y coordinates
+            // Checks if a players is in a specific X and Y coordinates
             if (PiecePos.X == 3 && PiecePos.Y == 1)
             {
                 // Checks the player's movement choice
                 if (moveChoice == 3)
                 {
                     // Returns a message
-                    return "Your piece can't move that way";
+                    return "Your players can't move that way";
                 }
             }
 
-            // Checks if a piece is in a specific X and Y coordinates
+            // Checks if a players is in a specific X and Y coordinates
             if (PiecePos.X == 1 && PiecePos.Y == 3)
             {
                 // Checks the player's movement choice
                 if (moveChoice == 7)
                 {
                     // Returns a message
-                    return "Your piece can't move that way";
+                    return "Your players can't move that way";
                 }
             }
 
-            // Checks if a piece is in a specific X and Y coordinates
+            // Checks if a players is in a specific X and Y coordinates
             if (PiecePos.X == 3 && PiecePos.Y == 3)
             {
                 // Checks the player's movement choice
                 if (moveChoice == 1)
                 {
                     // Returns a message
-                    return "Your piece can't move that way";
+                    return "Your players can't move that way";
                 }
             }
             // Returns null

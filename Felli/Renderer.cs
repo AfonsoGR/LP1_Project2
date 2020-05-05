@@ -2,184 +2,287 @@
 
 namespace Felli
 {
+    /// <summary>
+    /// Displays the current board and messages
+    /// </summary>
     public class Renderer
     {
+        // Stores the board
         private readonly Board board;
+        // Stores a string for the board lines
         private readonly string[] connectors;
-        private (Player, Player) piece;
+        // Stores both of the players
+        private (Player p1, Player p2) players;
 
-        public Renderer(Board board, (Player, Player) piece)
+        /// <summary>
+        /// Creates a Rednerer to display the board
+        /// </summary>
+        /// <param name="board"> The board created </param>
+        /// <param name="players"> Both players </param>
+        public Renderer(Board board, (Player, Player) players)
         {
-            this.piece = piece;
-            connectors = new string[6] { @"\", "|", "/", "/", "|", @"\" };
+            // Assigns the board the one given
             this.board = board;
+            // Assigns the players the ones given
+            this.players = players;
+            // Creates a string of the possible connectors
+            connectors = new string[6] { @"\", "|", "/", "/", "|", @"\" };
         }
 
+        /// <summary>
+        /// Renders the board and a message if any is given
+        /// </summary>
+        /// <param name="message"> The message to be rendered </param>
+        /// <param name="color"> A color from the color enum </param>
         public void Render(string message = null,
             ColorChoice color = ColorChoice.None)
         {
+            // Resets the board visuals to the default
             SetBoardVisuals();
 
             // Clears the console
             Console.Clear();
 
-            int l = board.SizeX - board.SizeX / 2;
+            // Creates an integer and gives it a value
+            int nDashes = board.SizeX - board.SizeX / 2;
 
-            int z = -1;
+            // creates an integer and gives it a value
+            int nSpaces = -1;
 
             // A loop for the width of the board
             for (int x = 0; x < board.SizeX; x++)
             {
-                Console.Write("\n");
+                // Writes a line
+                Console.WriteLine();
 
-                int nLines = 0;
+                // Creates an integer for the number of dashes
+                int nDashSets = 0;
 
+                // Checks if it's in the upper or middle of the board
                 if (x <= board.SizeX / 2)
                 {
-                    l--;
-                    z++;
+                    // Decrements nDashes by one
+                    nDashes--;
+                    // Increments nSpaces by one
+                    nSpaces++;
                 }
                 else
                 {
-                    l++;
-                    z--;
+                    // Increments nDashes by one
+                    nDashes++;
+                    // Decrements nSpaces by one
+                    nSpaces--;
                 }
 
-                DrawSpaces(x, z);
+                // Draws the spaces before the actual board
+                DrawSpaces(x, nSpaces);
 
                 // A loop for the height of the board
                 for (int y = 0; y < board.SizeY; y++)
                 {
+                    // Checks if that position on the board has a value
                     if (board[x, y] != default)
                     {
+                        // Renders the character on that position
+                        Console.Write($"{(char)board[x, y]}");
+
+                        // If the color provided is white
                         if (color == ColorChoice.White)
                         {
-                            ShowNumberID(x, y, piece.Item1.playerPieces);
+                            // Renders the IDs of the white pieces
+                            ShowNumberID(new Position(x, y),
+                                players.p1.playerPieces);
                         }
+                        // If the color provided is black
                         else if (color == ColorChoice.Black)
                         {
-                            ShowNumberID(x, y, piece.Item2.playerPieces);
-                        }
-                        else
-                        {
-                            Console.Write($"{(char)board[x, y]}");
+                            // Renders the IDs of the black pieces
+                            ShowNumberID(new Position(x, y),
+                                players.p2.playerPieces);
                         }
 
-                        if (nLines < 2)
+                        // Checks if the amount of dashes drawn is less than 2
+                        if (nDashSets < 2)
                         {
-                            nLines++;
-                            for (int o = 0; o < l; o++)
+                            // Increments the nDashSets by one
+                            nDashSets++;
+
+                            // Renders two dashes for each nDashes
+                            for (int o = 0; o < nDashes; o++)
                             {
                                 Console.Write("--");
                             }
                         }
                     }
                 }
+                // Draws the lines connecting the points
                 DrawConnectors(x);
             }
+            // Draws a message box below the board
             DrawMessageBox(message);
         }
 
-        private void ShowNumberID(int k, int l, Piece[] piece)
+        /// <summary>
+        /// Shows the ID number of each piece of the given player
+        /// </summary>
+        /// <param name="pos"> The current position coordinate </param>
+        /// <param name="player"> Player to have the pieces rendered </param>
+        private void ShowNumberID(Position pos, Piece[] player)
         {
-            Console.Write($"{(char)board[k, l]}");
-            for (int x = 0; x < piece.Length; x++)
+            // Cycles through all the pieces
+            for (int i = 0; i < player.Length; i++)
             {
-                if (piece[x].PiecePos.X == k &&
-                    piece[x].PiecePos.Y == l)
+                // Checks if the piece is at the position provided
+                if (player[i].PiecePos == pos)
                 {
-                    Console.Write(piece[x].ID);
+                    // Displays that piece ID
+                    Console.Write(player[i].ID);
+                    // Exits the loop
                     break;
                 }
             }
         }
 
+        /// <summary>
+        /// Applies the visuals of every piece to the board
+        /// </summary>
         private void SetBoardVisuals()
         {
+            // Resets the board visuals to it's original state
             board.SetBoardToInitState();
 
-            if (piece.Item1 != null && piece.Item2 != null)
+            // Checks if the players aren't null
+            if (players.p1 != null && players.p2 != null)
             {
+                // Checks every piece from player1
                 for (int white = 0;
-                    white < piece.Item1.playerPieces.Length; white++)
+                    white < players.p1.playerPieces.Length; white++)
                 {
-                    piece.Item1.playerPieces[white].PieceOnBoard();
+                    // Sets their position on the board their actual position
+                    players.p1.playerPieces[white].PieceOnBoard();
                 }
+                // Checks every piece from player2
                 for (int black = 0;
-                    black < piece.Item2.playerPieces.Length; black++)
+                    black < players.p2.playerPieces.Length; black++)
                 {
-                    piece.Item2.playerPieces[black].PieceOnBoard();
+                    // Sets their position on the board their actual position
+                    players.p2.playerPieces[black].PieceOnBoard();
                 }
             }
         }
 
-        private void DrawSpaces(int x, int z)
+        /// <summary>
+        /// Draws spaces for the board to be centered
+        /// </summary>
+        /// <param name="x"> The current x value </param>
+        /// <param name="nSpaces"> Number of needed spaces </param>
+        private void DrawSpaces(int x, int nSpaces)
         {
+            // Displays empty spaces
             Console.Write("  ");
-            if (x == board.SizeX / 2)
-            {
-                Console.Write(" ");
-            }
 
-            for (int p = 0; p < z; p++)
+            // Cycles for the amount of spaces needed
+            for (int p = 0; p < nSpaces; p++)
             {
+                // Writes a space
                 Console.Write("  ");
             }
+
+            // if it's in the middle of the board
+            if (x == board.SizeX / 2)
+            {
+                // Writes an extra empty space
+                Console.Write(" ");
+            }
         }
 
+        /// <summary>
+        /// Draws the lines between the points
+        /// </summary>
+        /// <param name="x"> The current x </param>
         private void DrawConnectors(int x)
         {
+            // Changes lines and shows a space
             Console.Write("\n  ");
 
-            int ç = x < board.SizeX / 2 ? 0 : 3;
+            // Sets the index number to 0 or 3 depending on which half it is
+            int indexN = x < board.SizeX / 2 ? 0 : 3;
 
+            // A loop for the height of the board
             for (int y = 0; y < board.SizeY; y++)
             {
+                // If it's at the top part of the board
                 if (x < board.SizeX / 2)
                 {
+                    // If that position has value
                     if (board[x, y] != default)
                     {
-                        Console.Write($"{connectors[ç]}  "); ç++;
+                        // Writes the connector and adds 1 to indexN
+                        Console.Write($"{connectors[indexN]}  "); indexN++;
                     }
                     else
                     {
+                        // Writes an empty space
                         Console.Write("  ");
                     }
                 }
+                // If the next X is acessible and is at the bottom of the board
                 else if (x + 1 < board.SizeX && x >= board.SizeX / 2)
                 {
+                    // If that position has value
                     if (board[x + 1, y] != default)
                     {
-                        Console.Write($"{connectors[ç]}  "); ç++;
+                        // Writes the connector and adds 1 to indexN
+                        Console.Write($"{connectors[indexN]}  "); indexN++;
                     }
                     else
                     {
+                        // Writes an empty space
                         Console.Write("  ");
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Draws a text box for displaying extra information
+        /// </summary>
+        /// <param name="message"> The message provided </param>
         private void DrawMessageBox(string message)
         {
-            string flair = "--------------------.--------------------." +
-                "---------------------.--------------------";
+            // Cheks if the message has something
             if (message != null)
             {
-                Console.WriteLine();
-                Console.WriteLine(flair);
-                int spaceLen = (83 - message.Length) / 2;
+                // Creates a string to be used as decoration
+                string flair = "+-------------------+--------------------+" +
+                                "---------------------+-------------------+";
+
+                // Changes lines and displays the flair
+                Console.WriteLine("\n" + flair);
+
+                // Saves the amount of spaces before and after in order for the
+                // message to be centered
+                int spaceLen = (flair.Length - message.Length) / 2;
+
+                // A loop for the amount of spaces needed
                 for (int p = 0; p < spaceLen; p++)
                 {
+                    // Writes an empty space
                     Console.Write(" ");
                 }
+
+                // Displays the message provided 
                 Console.Write(message);
+
+                // A loop for the amount of spaces needed
                 for (int p = 0; p < spaceLen; p++)
                 {
+                    // Writes an empty space
                     Console.Write(" ");
                 }
-                Console.WriteLine();
-                Console.WriteLine(flair);
+
+                // Changes lines and displays the flair
+                Console.WriteLine("\n" + flair);
             }
         }
     }

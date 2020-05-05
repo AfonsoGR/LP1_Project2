@@ -22,7 +22,7 @@
         /// </summary>
         /// <param name="x"> The X on the array </param>
         /// <param name="y"> The Y on the array </param>
-        /// <returns> The ColorChoice of the piece </returns>
+        /// <returns> The ColorChoice of the players </returns>
         public ColorChoice this[int x, int y]
         {
             get => boardPieces[x, y];

@@ -3,19 +3,25 @@ using System;
 namespace Felli
 {
     /// <summary>
-    /// A player containing its color, pieces and choosing the piece to move
+    /// A player containing its color, pieces and choosing the players to move
     /// </summary>
     public class Player
     {
-        // Stores the pieces of that player
+        /// <summary>
+        /// Stores the pieces of that player
+        /// </summary>
         public Piece[] playerPieces;
-        // Stores the opponent
+        /// <summary>
+        /// Stores the opponent
+        /// </summary>
         public Player opositePlayer;
-        // Stores the color of this player
+        /// <summary>
+        /// Stores the color of this player
+        /// </summary>
         public ColorChoice ColorChoice { get; }
 
         /// <summary>
-        /// Creates a new player with a color a piece array
+        /// Creates a new player with a color a players array
         /// </summary>
         /// <param name="color"> The color of the player </param>
         /// <param name="pieces"> An array of pieces </param>
@@ -28,9 +34,9 @@ namespace Felli
         }
 
         /// <summary>
-        /// Moves the piece that matched the ID provided
+        /// Moves the players that matched the ID provided
         /// </summary>
-        /// <param name="pieceChoice"> ID of the piece wanted </param>
+        /// <param name="pieceChoice"> ID of the players wanted </param>
         /// <returns> A string message </returns>
         public string MovePiece(int pieceChoice)
         {
@@ -49,13 +55,13 @@ namespace Felli
                     {
                         ;
                     }
-                    // Returns the message provided by the piece movement
+                    // Returns the message provided by the players movement
                     return playerPieces[i].PieceMovement
                         (opositePlayer, moveChoice);
                 }
             }
             // Not used, only in case of bug
-            return "That piece no longer exists";
+            return "That players no longer exists";
         }
     }
 }
