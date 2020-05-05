@@ -24,12 +24,9 @@ namespace Felli
             // Assigns a message to the choiceMessage string
             choiceMessage = "Which way do you wish to move the players?\n" +
                     "We advise using the NUMPAD due to the layout.\n\n" +
-                    "|7 -> Top Left |\t\t|8 ->    Top    |\t" +
-                    "\t|9 ->   TopRight   |\n" +
-                    "|4 ->   Left   |\t\t|  YOUR PIECE   |\t" +
-                    "\t|6 ->    Right     |\n" +
-                    "|1 -> Bot Left |\t\t|2 ->  Bottom   |\t" +
-                    "\t|3 -> Bottom Right |\n\n" +
+                    "|7 ->   Top Left   |    |8 ->      Top     |    |9 ->   TopRight   |\n" +
+                    "|4 ->     Left     |    |    YOUR PIECE    |    |6 ->    Right     |\n" +
+                    "|1 ->   Bot Left   |    |2 ->    Bottom    |    |3 -> Bottom Right |\n\n" +
                     ">> Press 0 to choose another players <<";
 
             // Creates a new GameInstance passing the size of the board
@@ -58,9 +55,9 @@ namespace Felli
             }
 
             // Displays the board along with a message
-            game.Graphics.Render("\t\tWho goes/plays first?"
-                + "\n\t >> For the Black pieces press B <<"
-                + "\n\t >> For the White pieces press W <<");
+            game.Graphics.Render("Who goes/plays first?"
+                + "\n>> For the Black pieces press B <<"
+                + "\n>> For the White pieces press W <<");
 
             // Defines which color plays first
             game.OrderSelection();
@@ -87,7 +84,7 @@ namespace Felli
                 if (win.WinCheck(game.Player2) != ColorChoice.None)
                 {
                     // Displays the board along with a message
-                    game.Graphics.Render($"The {game.Player2.ColorChoice}" + 
+                    game.Graphics.Render($"The {game.Player1.ColorChoice}" + 
                         "Pieces Win!");
 
                     // Asks for input from the user
@@ -103,7 +100,7 @@ namespace Felli
                 if (win.WinCheck(game.Player1) != ColorChoice.None)
                 {
                     // Displays the board along with a message
-                    game.Graphics.Render($"The {game.Player1.ColorChoice}" + 
+                    game.Graphics.Render($"The {game.Player2.ColorChoice}" + 
                         "Pieces Win!");
 
                     // Asks for input from the user

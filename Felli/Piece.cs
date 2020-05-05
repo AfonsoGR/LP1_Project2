@@ -76,10 +76,11 @@ namespace Felli
 
             // Checks if the current players is on 
             // the top or bottom line of the board
-            if (PiecePos.X == board.SizeX - 1 || PiecePos.X == 0)
+            if ((PiecePos.X == board.SizeX - 1 && x == 0) || 
+                (PiecePos.X == 0 && x == 0))
             {
                 // Assigns new value to 'nextY'
-                nextY = y * 2 + y * 2;
+                nextY = (y * 2 ) + (y * 2) ;
             }
 
             // Checks if the player will stay inside the board after he moves
@@ -94,8 +95,8 @@ namespace Felli
             }
 
             // Checks if the player can capture the players in his way
-            if (board[PiecePos.X + x, PiecePos.Y + y] != visuals &&
-                board[PiecePos.X + x, PiecePos.Y + y] != ColorChoice.None &&
+            if (board[PiecePos.X + nextX/2, PiecePos.Y + nextY/2] != visuals &&
+                board[PiecePos.X + nextX/2 , PiecePos.Y + nextY/2] != ColorChoice.None &&
                 canMove)
             {
                 // Checks if the player isn't null
@@ -116,13 +117,14 @@ namespace Felli
                 return null;
             }
             // Checks if the player can move to the next open space
-            else if (board[PiecePos.X + x, PiecePos.Y + y] == ColorChoice.None)
+            else if (board[PiecePos.X + x, PiecePos.Y + nextY / 2] 
+                == ColorChoice.None)
             {
                 // Checks if the player isn't null
                 if (player != null)
                 {
                     // Calculates new position for the current players
-                    PiecePos += (x, y);
+                    PiecePos += (x, nextY / 2);
                 }
                 // Returns null
                 return null;

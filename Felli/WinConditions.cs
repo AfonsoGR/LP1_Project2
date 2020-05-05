@@ -19,7 +19,7 @@ namespace Felli
             for (int b = 0; b < player.playerPieces.Length; b++)
             {
                 // Checks all of the current player's pieces
-                for (int i = 1; i < 8; i++)
+                for (int i = 1; i < 9; i++)
                 {
                     // Assigns movement value to 'lost' string
                     lost = player.playerPieces[b].PieceMovement(null, i);

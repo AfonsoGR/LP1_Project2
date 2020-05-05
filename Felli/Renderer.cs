@@ -253,34 +253,42 @@ namespace Felli
             // Cheks if the message has something
             if (message != null)
             {
+                // Splits the message by the '\n' char
+                string[] splitMessage = message.Split('\n');
                 // Creates a string to be used as decoration
                 string flair = "+-------------------+--------------------+" +
                                 "---------------------+-------------------+";
 
                 // Changes lines and displays the flair
-                Console.WriteLine("\n" + flair);
+                Console.WriteLine("\n" + flair + "\n");
 
-                // Saves the amount of spaces before and after in order for the
-                // message to be centered
-                int spaceLen = (flair.Length - message.Length) / 2;
-
-                // A loop for the amount of spaces needed
-                for (int p = 0; p < spaceLen; p++)
+                // Checks all the strings on the splitMessage array
+                for (int i = 0; i < splitMessage.Length; i++)
                 {
-                    // Writes an empty space
-                    Console.Write(" ");
+                    // Saves the amount of spaces before and after in order for
+                    // the message to be centered
+                    int spaceLen = (flair.Length - splitMessage[i].Length) / 2;
+
+                    // A loop for the amount of spaces needed
+                    for (int p = 0; p < spaceLen; p++)
+                    {
+                        // Writes an empty space
+                        Console.Write(" ");
+                    }
+
+                    // Displays the message provided 
+                    Console.Write(splitMessage[i]);
+
+                    // A loop for the amount of spaces needed
+                    for (int p = 0; p < spaceLen; p++)
+                    {
+                        // Writes an empty space
+                        Console.Write(" ");
+                    }
+
+                    // Changes lines
+                    Console.WriteLine();
                 }
-
-                // Displays the message provided 
-                Console.Write(message);
-
-                // A loop for the amount of spaces needed
-                for (int p = 0; p < spaceLen; p++)
-                {
-                    // Writes an empty space
-                    Console.Write(" ");
-                }
-
                 // Changes lines and displays the flair
                 Console.WriteLine("\n" + flair);
             }
