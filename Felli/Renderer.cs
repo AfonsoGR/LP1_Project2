@@ -85,10 +85,10 @@ namespace Felli
             Console.Write($"{(char)board[k, l]}");
             for (int x = 0; x < piece.Length; x++)
             {
-                if (piece[x].piecePos.X == k &&
-                    piece[x].piecePos.Y == l)
+                if (piece[x].PiecePos.X == k &&
+                    piece[x].PiecePos.Y == l)
                 {
-                    Console.Write(piece[x].id);
+                    Console.Write(piece[x].ID);
                     break;
                 }
             }

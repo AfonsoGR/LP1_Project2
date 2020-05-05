@@ -7,64 +7,65 @@ namespace Felli
     /// </summary>
     public class Piece
     {
-        public Position piecePos;
-        public ColorChoice visuals;
+        public Position PiecePos { get; private set; }
+        public int ID { get; }
+
+        private readonly ColorChoice visuals;
         private readonly Board board;
-        public int id;
 
         public Piece(ColorChoice visuals, Board board, int row = 0,
             int column = 0, int iD = 0)
         {
-            id = iD;
-            piecePos = new Position(row, column);
+            ID = iD;
+            PiecePos = new Position(row, column);
             this.board = board;
             this.visuals = visuals;
         }
 
         public void PieceOnBoard()
         {
-            board[piecePos.X, piecePos.Y] = visuals;
+            board[PiecePos.X, PiecePos.Y] = visuals;
         }
 
-        private string MovementCoordinates(Player player, int x, int y)
+        private string TryCaptureOrMove(Player player, int x, int y)
         {
             bool canMove = false;
 
             int nextX = x + x;
             int nextY = y + y;
 
-            if (piecePos.X == board.SizeX - 1 || piecePos.X == 0)
+            if (PiecePos.X == board.SizeX - 1 || PiecePos.X == 0)
             {
                 nextY = y * 2 + y * 2;
             }
 
-            if ((piecePos.X + nextX >= 0 && piecePos.Y + nextY >= 0 &&
-                piecePos.X + nextX < board.SizeX &&
-                piecePos.Y + nextY < board.SizeY))
+            if ((PiecePos.X + nextX >= 0 && PiecePos.Y + nextY >= 0 &&
+                PiecePos.X + nextX < board.SizeX &&
+                PiecePos.Y + nextY < board.SizeY))
             {
-                canMove = (board[piecePos.X + nextX, piecePos.Y + nextY]
+                canMove = (board[PiecePos.X + nextX, PiecePos.Y + nextY]
                 == ColorChoice.None);
             }
 
-            if (board[piecePos.X + x, piecePos.Y + y] != visuals &&
-                board[piecePos.X + x, piecePos.Y + y] != ColorChoice.None &&
+            if (board[PiecePos.X + x, PiecePos.Y + y] != visuals &&
+                board[PiecePos.X + x, PiecePos.Y + y] != ColorChoice.None &&
                 canMove)
             {
                 if (player != null)
                 {
                     Position position =
-                        new Position(piecePos.X + nextX / 2, piecePos.Y + nextY / 2);
+                        new Position(PiecePos.X + nextX / 2, PiecePos.Y + nextY / 2);
                     CapturePiece(player, position);
 
-                    piecePos += (nextX, nextY);
+                    PiecePos += (nextX, nextY);
                 }
                 return null;
             }
-            else if (board[piecePos.X + x, piecePos.Y + y] == ColorChoice.None)
+            else if (board[PiecePos.X + x, PiecePos.Y + y] == ColorChoice.None)
             {
                 if (player != null)
                 {
-                    piecePos += (x, y);
+                    PiecePos += (x, y);
                 }
                 return null;
             }
@@ -74,13 +75,13 @@ namespace Felli
             }
         }
 
-        public void CapturePiece(Player player, Position position)
+        private void CapturePiece(Player player, Position position)
         {
             List<Piece> capturedPieces = new List<Piece>();
 
             for (int i = 0; i < player.playerPieces.Length; i++)
             {
-                if (player.playerPieces[i].piecePos != position)
+                if (player.playerPieces[i].PiecePos != position)
                 {
                     capturedPieces.Add(player.playerPieces[i]);
                 }
@@ -104,50 +105,50 @@ namespace Felli
             }
             else if (moveChoice == 1)
             {
-                return piecePos.X < 4 && piecePos.Y > 0 ?
-                    MovementCoordinates(opositePlayer, 1, -1)
+                return PiecePos.X < 4 && PiecePos.Y > 0 ?
+                    TryCaptureOrMove(opositePlayer, 1, -1)
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 2)
             {
-                return piecePos.X < 4 ?
-                    MovementCoordinates(opositePlayer, 1, 0)
+                return PiecePos.X < 4 ?
+                    TryCaptureOrMove(opositePlayer, 1, 0)
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 3)
             {
-                return piecePos.X < 4 && piecePos.Y < 4 ?
-                    MovementCoordinates(opositePlayer, 1, 1)
+                return PiecePos.X < 4 && PiecePos.Y < 4 ?
+                    TryCaptureOrMove(opositePlayer, 1, 1)
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 4)
             {
-                return piecePos.Y > 0 ?
-                    MovementCoordinates(opositePlayer, 0, -1)
+                return PiecePos.Y > 0 ?
+                    TryCaptureOrMove(opositePlayer, 0, -1)
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 6)
             {
-                return piecePos.Y < 4 ?
-                    MovementCoordinates(opositePlayer, 0, 1)
+                return PiecePos.Y < 4 ?
+                    TryCaptureOrMove(opositePlayer, 0, 1)
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 7)
             {
-                return piecePos.X > 0 && piecePos.Y > 0 ?
-                    MovementCoordinates(opositePlayer, -1, -1)
+                return PiecePos.X > 0 && PiecePos.Y > 0 ?
+                    TryCaptureOrMove(opositePlayer, -1, -1)
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 8)
             {
-                return piecePos.X > 0 ?
-                    MovementCoordinates(opositePlayer, -1, 0)
+                return PiecePos.X > 0 ?
+                    TryCaptureOrMove(opositePlayer, -1, 0)
                     : "Your piece can't move that way.";
             }
             else if (moveChoice == 9)
             {
-                return piecePos.X > 0 && piecePos.Y < 4 ?
-                    MovementCoordinates(opositePlayer, -1, 1)
+                return PiecePos.X > 0 && PiecePos.Y < 4 ?
+                    TryCaptureOrMove(opositePlayer, -1, 1)
                     : "Your piece can't move that way.";
             }
             else
@@ -158,7 +159,7 @@ namespace Felli
 
         private string Restrictions(int moveChoice)
         {
-            if (piecePos.X != board.SizeX / 2 && piecePos.Y == board.SizeY / 2)
+            if (PiecePos.X != board.SizeX / 2 && PiecePos.Y == board.SizeY / 2)
             {
                 if (moveChoice == 1 || moveChoice == 3 ||
                     moveChoice == 7 || moveChoice == 9)
@@ -167,7 +168,7 @@ namespace Felli
                 }
             }
 
-            if (piecePos.X == 1 && piecePos.Y == 1)
+            if (PiecePos.X == 1 && PiecePos.Y == 1)
             {
                 if (moveChoice == 9)
                 {
@@ -175,7 +176,7 @@ namespace Felli
                 }
             }
 
-            if (piecePos.X == 3 && piecePos.Y == 1)
+            if (PiecePos.X == 3 && PiecePos.Y == 1)
             {
                 if (moveChoice == 3)
                 {
@@ -183,7 +184,7 @@ namespace Felli
                 }
             }
 
-            if (piecePos.X == 1 && piecePos.Y == 3)
+            if (PiecePos.X == 1 && PiecePos.Y == 3)
             {
                 if (moveChoice == 7)
                 {
@@ -191,7 +192,7 @@ namespace Felli
                 }
             }
 
-            if (piecePos.X == 3 && piecePos.Y == 3)
+            if (PiecePos.X == 3 && PiecePos.Y == 3)
             {
                 if (moveChoice == 1)
                 {

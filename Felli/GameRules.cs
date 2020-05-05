@@ -11,7 +11,7 @@ namespace Felli
         /// Displays text on how to play the game and
         /// awaits for user input before proceeding
         /// </summary>
-        public void GR(Renderer rend)
+        public void DisplayGameRules(Renderer rend)
         {
             // Displays text on screen with information regarding the game
             rend.Render("Welcome to Felli!\nA 2 (two) player turn based "

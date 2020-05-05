@@ -23,7 +23,8 @@ namespace Felli
             }
             if (lost != null)
             {
-                return player.ColorChoice;
+                return player.ColorChoice == ColorChoice.White? 
+                    ColorChoice.Black : ColorChoice.White;
             }
             return ColorChoice.None;
         }
