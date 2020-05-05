@@ -41,8 +41,9 @@ namespace Felli
             // Checks if 'lost' string isn't null
             if (lost != null)
             {
-                // X
-                return player.ColorChoice;
+                // Returns the opposite color of the player that lost
+                return player.ColorChoice == ColorChoice.White? 
+                    ColorChoice.Black : ColorChoice.White;
             }
             // Returns value 'None' from the ColorChoice enumerator
             return ColorChoice.None;

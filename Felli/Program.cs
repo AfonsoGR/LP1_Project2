@@ -3,19 +3,20 @@
 namespace Felli
 {
     /// <summary>
-    /// Main class of the program cointaning the game loop
+    /// Main class of the program calls game start
     /// </summary>
     class Program
     {
         /// <summary>
         /// Game initialization and game loop
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args"> Arguments passed through console </param>
         private static void Main(string[] args)
         {
+            // Creates a variable of GameLoop
             GameLoop game;
 
-            // Main loop of the game
+            // Runs a new game until the player's decide to stop
             while (true)
             {
                 // Creates a new game loop
@@ -31,7 +32,7 @@ namespace Felli
                 Console.WriteLine("Do you wish to play again?\nPress Y if " +
                     "you do, press any other key to leave");
 
-                // Checks for user input
+                // Checks for user input is "Y"
                 if (Console.ReadLine().ToUpper() != "Y")
                 {
                     // Exits the while loop
