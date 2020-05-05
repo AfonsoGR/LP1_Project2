@@ -30,6 +30,7 @@ confirmado a clareza e veracidade do conteúdo do mesmo com o colega.
 O aluno, André Vitorino, foi o responsável pelas classes `Board.cs` e
 `Program.cs`, `Board.cs`, `GameLoop.cs`, `GameLoop.cs` e `Position.cs` tendo
 sido o responsável pela lógica, estruturação e funcionamento das mesmas.
+ajudou o colega maioritariamente nas classes `Piece.cs` e `WinConditions.cs`.
 
 O aluno também fez otimizações noutras classes pertencentes ao colega.
 

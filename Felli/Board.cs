@@ -5,13 +5,14 @@
     /// </summary>
     public class Board
     {
-        // A bi-demensional array containing a ColorChoice
+        // A bi-dimensional array containing a ColorChoice
         private readonly ColorChoice[,] boardPieces;
 
         /// <summary>
         /// The width of the board
         /// </summary>
         public int SizeX => boardPieces.GetLength(0);
+
         /// <summary>
         /// The height of the board
         /// </summary>
@@ -33,7 +34,7 @@
         /// Creates a new board with the given size
         /// </summary>
         /// <param name="xSize"> Height of the board </param>
-        /// <param name="ySize"> Lenght of the board </param>
+        /// <param name="ySize"> Length of the board </param>
         public Board(int xSize, int ySize)
         {
             // Creates a new array with the dimensions provided

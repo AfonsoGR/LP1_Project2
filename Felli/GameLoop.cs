@@ -9,10 +9,13 @@ namespace Felli
     {
         // Stores a string for the message for each players decision
         private readonly string choiceMessage;
+
         // Creates a GameInstace of the game
         private readonly GameInstance game;
+
         // Creates an instance of the win checker
         private readonly WinConditions win;
+
         // Number of pieces on the board for a player at the start
         private int maxPieceN;
 
@@ -24,9 +27,12 @@ namespace Felli
             // Assigns a message to the choiceMessage string
             choiceMessage = "Which way do you wish to move the players?\n" +
                     "We advise using the NUMPAD due to the layout.\n\n" +
-                    "|7 ->   Top Left   |    |8 ->      Top     |    |9 ->   TopRight   |\n" +
-                    "|4 ->     Left     |    |    YOUR PIECE    |    |6 ->    Right     |\n" +
-                    "|1 ->   Bot Left   |    |2 ->    Bottom    |    |3 -> Bottom Right |\n\n" +
+                    "|7 ->   Top Left   |    |8 ->      Top     |    " +
+                    "|9 ->   TopRight   |\n" +
+                    "|4 ->     Left     |    |    YOUR PIECE    |    " +
+                    "|6 ->    Right     |\n" +
+                    "|1 ->   Bot Left   |    |2 ->    Bottom    |    " +
+                    "|3 -> Bottom Right |\n\n" +
                     ">> Press 0 to choose another players <<";
 
             // Creates a new GameInstance passing the size of the board
@@ -70,7 +76,7 @@ namespace Felli
         }
 
         /// <summary>
-        /// Main loop of the game, updates inputs, visuals and winner check 
+        /// Main loop of the game, updates inputs, visuals and winner check
         /// </summary>
         private void Update()
         {
@@ -84,13 +90,13 @@ namespace Felli
                 if (win.WinCheck(game.Player2) != ColorChoice.None)
                 {
                     // Displays the board along with a message
-                    game.Graphics.Render($"The {game.Player1.ColorChoice}" + 
+                    game.Graphics.Render($"The {game.Player1.ColorChoice} " +
                         "Pieces Win!");
 
                     // Asks for input from the user
                     Console.ReadKey();
 
-                    // Leaves the while loop 
+                    // Leaves the while loop
                     break;
                 }
                 // Asks the user to perform a move
@@ -100,13 +106,13 @@ namespace Felli
                 if (win.WinCheck(game.Player1) != ColorChoice.None)
                 {
                     // Displays the board along with a message
-                    game.Graphics.Render($"The {game.Player2.ColorChoice}" + 
+                    game.Graphics.Render($"The {game.Player2.ColorChoice} " +
                         "Pieces Win!");
 
                     // Asks for input from the user
                     Console.ReadKey();
 
-                    // Leaves the while loop 
+                    // Leaves the while loop
                     break;
                 }
             }
@@ -140,7 +146,7 @@ namespace Felli
                 // Displays the board along with a message
                 game.Graphics.Render(choiceMessage);
 
-                // Does the movement of that players returning a string if it can
+                // Does the movement getting a response string in return
                 message = player.MovePiece(pieceChoice);
 
                 // Displays the board along with a message

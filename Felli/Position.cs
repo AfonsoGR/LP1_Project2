@@ -1,7 +1,7 @@
 ﻿namespace Felli
 {
     /// <summary>
-    /// 
+    /// Stores the value of two integers
     /// </summary>
     public struct Position
     {
@@ -10,7 +10,7 @@
         /// </summary>
         /// <value> Value of X position </value>
         public int X { get; }
-        
+
         /// <summary>
         /// Gets the value of the Y position
         /// </summary>
@@ -36,14 +36,19 @@
         /// </summary>
         /// <param name="obj"> The object to be compared with </param>
         /// <returns> Returns if the equality is true </returns>
-        public override bool Equals(object obj) => base.Equals(obj);
-        
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
 
         /// <summary>
         /// Gets the has code of the object
         /// </summary>
         /// <returns> Returns the specific hash code of the object </returns>
-        public override int GetHashCode() => base.GetHashCode();
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
         /// <summary>
         /// Compares position values
@@ -51,8 +56,10 @@
         /// <param name="left"> First given position </param>
         /// <param name="right"> Second given position </param>
         /// <returns> Returns true if the positions are equal </returns>
-        public static bool operator ==(Position left, Position right) 
-            => left.X == right.X && left.Y == right.Y;
+        public static bool operator ==(Position left, Position right)
+        {
+            return left.X == right.X && left.Y == right.Y;
+        }
 
         /// <summary>
         /// Compares position values
@@ -60,15 +67,19 @@
         /// <param name="left"> First given position </param>
         /// <param name="right"> Second given position </param>
         /// <returns> Returns true if the positions aren't equal </returns>
-        public static bool operator !=(Position left, Position right) 
-            => !(left == right);
+        public static bool operator !=(Position left, Position right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         /// Adds the values to the position
         /// </summary>
         /// <param name="pos"> Provided position </param>
         /// <returns> Returns a new position </returns>
-        public static Position operator +(Position pos, (int, int) add) 
-            => new Position(pos.X + add.Item1, pos.Y + add.Item2);
+        public static Position operator +(Position pos, (int, int) add)
+        {
+            return new Position(pos.X + add.Item1, pos.Y + add.Item2);
+        }
     }
 }

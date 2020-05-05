@@ -11,10 +11,12 @@ namespace Felli
         /// Stores the pieces of that player
         /// </summary>
         public Piece[] playerPieces;
+
         /// <summary>
         /// Stores the opponent
         /// </summary>
         public Player opositePlayer;
+
         /// <summary>
         /// Stores the color of this player
         /// </summary>

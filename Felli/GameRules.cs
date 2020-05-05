@@ -17,7 +17,7 @@ namespace Felli
             rend.Render("Welcome to Felli!\n\nA 2 (two) player turn based "
                 + "PVP game.\n\n"
                 + "In this game the players will try to defeat eachother  \n"
-                + "by either capturing eachother's pieces or by making    \n" 
+                + "by either capturing eachother's pieces or by making    \n"
                 + "them unable to move.                                   \n\n"
                 + "Each player will have access to 6 pieces. At the start \n"
                 + "of the game the players will select who has the White  \n"

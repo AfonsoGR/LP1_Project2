@@ -10,8 +10,10 @@ namespace Felli
     {
         // Variable to store the board
         private readonly Board Board;
+
         // Stores the black pieces created
         private readonly List<Piece> blackPieces;
+
         // Stores the white pieces created
         private readonly List<Piece> whitePieces;
 
@@ -19,10 +21,12 @@ namespace Felli
         /// The player that will play first
         /// </summary>
         public Player Player1 { get; private set; }
+
         /// <summary>
         /// The player that will play second
         /// </summary>
         public Player Player2 { get; private set; }
+
         /// <summary>
         /// Class used to render the board and messages
         /// </summary>

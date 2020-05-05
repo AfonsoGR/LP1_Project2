@@ -42,7 +42,7 @@ namespace Felli
             if (lost != null)
             {
                 // Returns the opposite color of the player that lost
-                return player.ColorChoice == ColorChoice.White? 
+                return player.ColorChoice == ColorChoice.White ?
                     ColorChoice.Black : ColorChoice.White;
             }
             // Returns value 'None' from the ColorChoice enumerator

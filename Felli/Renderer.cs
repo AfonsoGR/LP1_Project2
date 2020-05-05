@@ -9,8 +9,10 @@ namespace Felli
     {
         // Stores the board
         private readonly Board board;
+
         // Stores a string for the board lines
         private readonly string[] connectors;
+
         // Stores both of the players
         private (Player p1, Player p2) players;
 
@@ -276,7 +278,7 @@ namespace Felli
                         Console.Write(" ");
                     }
 
-                    // Displays the message provided 
+                    // Displays the message provided
                     Console.Write(splitMessage[i]);
 
                     // A loop for the amount of spaces needed
