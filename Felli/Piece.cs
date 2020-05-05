@@ -133,7 +133,7 @@ namespace Felli
             else
             {
                 // Returns a message
-                return "Your players can't move that way.";
+                return "Your pieces can't move that way.";
             }
         }
 
@@ -194,7 +194,7 @@ namespace Felli
                 // returns string if it can't
                 return PiecePos.X < 4 && PiecePos.Y > 0 ?
                     CaptureOrMove(opositePlayer, 1, -1)
-                    : "Your players can't move that way.";
+                    : "Your pieces can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 2)
@@ -203,7 +203,7 @@ namespace Felli
                 // returns string if it can't
                 return PiecePos.X < 4 ?
                     CaptureOrMove(opositePlayer, 1, 0)
-                    : "Your players can't move that way.";
+                    : "Your pieces can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 3)
@@ -212,7 +212,7 @@ namespace Felli
                 // returns string if it can't
                 return PiecePos.X < 4 && PiecePos.Y < 4 ?
                     CaptureOrMove(opositePlayer, 1, 1)
-                    : "Your players can't move that way.";
+                    : "Your pieces can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 4)
@@ -221,7 +221,7 @@ namespace Felli
                 // returns string if it can't
                 return PiecePos.Y > 0 ?
                     CaptureOrMove(opositePlayer, 0, -1)
-                    : "Your players can't move that way.";
+                    : "Your pieces can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 6)
@@ -230,7 +230,7 @@ namespace Felli
                 // returns string if it can't
                 return PiecePos.Y < 4 ?
                     CaptureOrMove(opositePlayer, 0, 1)
-                    : "Your players can't move that way.";
+                    : "Your pieces can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 7)
@@ -239,7 +239,7 @@ namespace Felli
                 // returns string if it can't
                 return PiecePos.X > 0 && PiecePos.Y > 0 ?
                     CaptureOrMove(opositePlayer, -1, -1)
-                    : "Your players can't move that way.";
+                    : "Your pieces can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 8)
@@ -248,7 +248,7 @@ namespace Felli
                 // returns string if it can't
                 return PiecePos.X > 0 ?
                     CaptureOrMove(opositePlayer, -1, 0)
-                    : "Your players can't move that way.";
+                    : "Your pieces can't move that way.";
             }
             // Checks the player's movement choice
             else if (moveChoice == 9)
@@ -257,13 +257,13 @@ namespace Felli
                 // returns string if it can't
                 return PiecePos.X > 0 && PiecePos.Y < 4 ?
                     CaptureOrMove(opositePlayer, -1, 1)
-                    : "Your players can't move that way.";
+                    : "Your pieces can't move that way.";
             }
             // Previous conditions weren't met
             else
             {
                 // Returns a message
-                return "Please select valid option.";
+                return "Please select a valid option.";
             }
         }
 
@@ -282,7 +282,7 @@ namespace Felli
                     moveChoice == 7 || moveChoice == 9)
                 {
                     // Returns a message
-                    return "Your players can't move that way";
+                    return "Your pieces can't move that way";
                 }
             }
 
@@ -293,7 +293,7 @@ namespace Felli
                 if (moveChoice == 9)
                 {
                     // Returns a message
-                    return "Your players can't move that way";
+                    return "Your pieces can't move that way";
                 }
             }
 
@@ -304,7 +304,7 @@ namespace Felli
                 if (moveChoice == 3)
                 {
                     // Returns a message
-                    return "Your players can't move that way";
+                    return "Your pieces can't move that way";
                 }
             }
 
@@ -315,7 +315,7 @@ namespace Felli
                 if (moveChoice == 7)
                 {
                     // Returns a message
-                    return "Your players can't move that way";
+                    return "Your pieces can't move that way";
                 }
             }
 
@@ -326,7 +326,7 @@ namespace Felli
                 if (moveChoice == 1)
                 {
                     // Returns a message
-                    return "Your players can't move that way";
+                    return "Your pieces can't move that way";
                 }
             }
             // Returns null

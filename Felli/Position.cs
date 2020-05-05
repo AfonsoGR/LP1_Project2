@@ -1,7 +1,7 @@
 ﻿namespace Felli
 {
     /// <summary>
-    /// 
+    /// Stores the value of two intergers 
     /// </summary>
     public struct Position
     {
