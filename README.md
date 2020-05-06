@@ -68,10 +68,10 @@ Finalmente a classe `ColorChoice` indica a cor da peça ou do jogador e a
 
 # Referências
 
-Foram reaproveitados elementos do projeto anterior destes alunos realizado
-nesta cadeira e ainda foi consultada a API do c# online.
-
+Foi consultada a 
 [API&nbsp;do&nbsp;C#](
-    ps://docs.microsoft.com/en-us/dotnet/api/system?view=netcore-3.1)
-
-[Projeto de referência.](https://github.com/AfonsoGR/LP1_Projeto_1)
+    ps://docs.microsoft.com/en-us/dotnet/api/system?view=netcore-3.1) online.
+    
+Foram reaproveitados elementos do
+[projeto](https://github.com/AfonsoGR/LP1_Projeto_1) anterior destes alunos
+realizado para esta cadeira.
