@@ -9,7 +9,7 @@ namespace Felli
     public class GameInstance
     {
         // Variable to store the board
-        private readonly Board Board;
+        private readonly Board board;
 
         // Stores the black pieces created
         private readonly List<Piece> blackPieces;
@@ -41,19 +41,19 @@ namespace Felli
         public GameInstance(int x, int y)
         {
             // Creates a new Board with the provided x and y dimensions
-            Board = new Board(x, y);
+            board = new Board(x, y);
             // Creates a new list of black pieces
             blackPieces = new List<Piece>();
             // Creates a new list of white pieces
             whitePieces = new List<Piece>();
 
             // Set's the board to the initial state
-            Board.SetBoardToInitState();
+            board.SetBoardToInitState();
             // Generates the pieces of both players
             CreatePieces();
 
             // Creates a new Renderer providing the players and the board
-            Graphics = new Renderer(Board, (Player1, Player2));
+            Graphics = new Renderer(board, (Player1, Player2));
         }
 
         /// <summary>
@@ -65,34 +65,34 @@ namespace Felli
             int id = 1;
 
             // Loops through the board width
-            for (int x = 0; x < Board.SizeX; x++)
+            for (int x = 0; x < board.SizeX; x++)
             {
                 // Checks if the x is at the middle
-                if (x == Board.SizeX / 2)
+                if (x == board.SizeX / 2)
                 {
                     // resets the ID back to one
                     id = 1;
                 }
 
                 // Loops through the board height
-                for (int y = 0; y < Board.SizeY; y++)
+                for (int y = 0; y < board.SizeY; y++)
                 {
                     // Checks if there's no players and it's at the top half
-                    if (Board[x, y] == ColorChoice.None && x < Board.SizeX / 2)
+                    if (board[x, y] == ColorChoice.None && x < board.SizeX / 2)
                     {
                         // Adds a new black players on the X and Y
                         // providing the ID
                         blackPieces.Add(new Piece
-                            (ColorChoice.Black, Board, x, y, id));
+                            (ColorChoice.Black, board, x, y, id));
                         // Increments the ID by one;
                         id++;
                     }
-                    if (Board[x, y] == ColorChoice.None && x > Board.SizeX / 2)
+                    if (board[x, y] == ColorChoice.None && x > board.SizeX / 2)
                     {
                         // Adds a new white players on the X and Y
                         // providing the ID
                         whitePieces.Add(new Piece
-                            (ColorChoice.White, Board, x, y, id));
+                            (ColorChoice.White, board, x, y, id));
                         // Increments the ID by one;
                         id++;
                     }
@@ -124,7 +124,7 @@ namespace Felli
                 Player2 = new Player(ColorChoice.Black, blackPieces.ToArray());
 
                 // Creates a new render with the new players
-                Graphics = new Renderer(Board, (Player1, Player2));
+                Graphics = new Renderer(board, (Player1, Player2));
             }
             else
             {
@@ -134,7 +134,7 @@ namespace Felli
                 Player2 = new Player(ColorChoice.White, whitePieces.ToArray());
 
                 // Creates a new render with the new players
-                Graphics = new Renderer(Board, (Player2, Player1));
+                Graphics = new Renderer(board, (Player2, Player1));
             }
         }
     }
