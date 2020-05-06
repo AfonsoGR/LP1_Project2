@@ -56,7 +56,6 @@ X
 
 ## Referências
 
-Foram reaproveitados elementos do projeto anterior destes alunos realizado
-nesta cadeira.
-
-[Projeto de referência.](https://github.com/AfonsoGR/LP1_Projeto_1)
+Foram reaproveitados elementos do
+[projeto](https://github.com/AfonsoGR/LP1_Projeto_1) anterior destes alunos
+realizado para esta cadeira.
