@@ -14,15 +14,15 @@ O repositório utilizado pode ser encontrado
 
 #### Afonso Rosa
 
-O aluno, Afonso Rosa, foi o responsável pelas classes `Piece.cs`, `Player.cs`,
-`WinConditions.cs`, `GameRules.cs` e `ColorChoice.cs`, tendo sido o responsável
+O aluno, Afonso Rosa, foi o responsável pelas classes `Piece`, `Player`,
+`WinConditions`, `GameRules` e `ColorChoice`, tendo sido o responsável
 pela lógica, estruturação e funcionamento das mesmas, embora isto não tenha sido
 obtido sem o apoio do colega que ajudou na otimização e no funcionamento das
-mesmas, tendo recibo ajuda maioritariamente nas classes `Piece.cs` e
-`WinConditions.cs`.
+mesmas, tendo recibo ajuda maioritariamente nas classes `Piece` e
+`WinConditions`.
 
-Tratou ainda da documentação das classes `Piece.cs`, `WinConditions.cs`,
-`Program.cs`, `Position.cs` e o `GameRules.cs` tendo confirmado com o colega a
+Tratou ainda da documentação das classes `Piece`, `WinConditions`,
+`Program`, `Position` e o `GameRules` tendo confirmado com o colega a
 credibilidade da mesma.
 
 Foi um dos principais responsáveis pelo (ficheiro `README.md`), tendo
@@ -30,15 +30,15 @@ confirmado a clareza e veracidade do conteúdo do mesmo com o colega.
 
 #### André Vitorino
 
-O aluno, André Vitorino, foi o responsável pelas classes `Board.cs`,
-`Program.cs`, `Board.cs`, `GameLoop.cs`, `GameInstance.cs` e `Position.cs` tendo
+O aluno, André Vitorino, foi o responsável pelas classes `Board`,
+`Program`, `Board`, `GameLoop`, `GameInstance` e `Position` tendo
 sido o responsável pela lógica, estruturação e funcionamento das mesmas.
-ajudou o colega maioritariamente nas classes `Piece.cs` e `WinConditions.cs`.
+ajudou o colega maioritariamente nas classes `Piece` e `WinConditions`.
 
 O aluno também fez otimizações noutras classes pertencentes ao colega.
 
-Tratou ainda documentação das classes `Renderer.cs`, `GameLoop.cs`,
-`GameInstance.cs`, `Player.cs`, `ColorChoice.cs`e `Board.cs`.
+Tratou ainda documentação das classes `Renderer`, `GameLoop`,
+`GameInstance`, `Player`, `ColorChoice`e `Board`.
 
 Foi um dos principais responsáveis pelo (ficheiro `README.md`), tendo
 confirmado a clareza e veracidade do conteúdo do mesmo com o colega.
